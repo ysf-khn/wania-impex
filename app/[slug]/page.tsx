@@ -34,6 +34,22 @@ interface CategoryPageProps {
   };
 }
 
+interface Size {
+  price: number;
+}
+
+interface Product {
+  _id: string;
+  itemNo: string;
+  itemName: string;
+  itemCategory: string;
+  sizes: Size[];
+  design?: string;
+  finish?: string;
+  colors?: string[];
+  images: string[];
+}
+
 export default async function CategoryPage({ params }: CategoryPageProps) {
   const { slug } = params;
   const category = categories.find((cat) => cat.slug === slug);
@@ -42,7 +58,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
     return <div>Category Not Found</div>;
   }
 
-  const products = await client.fetch(productsQuery, { slug });
+  const products: Product[] = await client.fetch(productsQuery, { slug });
 
   return (
     <div className="min-h-screen bg-stone-50">
@@ -63,10 +79,10 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
       <main className="container mx-auto px-4 md:px-8 py-12">
         {products.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {products.map((product: any) => {
+            {products.map((product) => {
               // Calculate the minimum price from the sizes array
               const minPrice = Math.min(
-                ...product.sizes.map((size: any) => size.price)
+                ...product.sizes.map((size) => size.price)
               );
 
               return (

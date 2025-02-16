@@ -97,8 +97,8 @@ const Page = () => {
         {filteredCategories.length === 0 && (
           <div className="text-center py-12">
             <p className="text-stone-600 font-body">
-              No categories found for "{searchQuery}". Please try another
-              search.
+              No categories found for &quot;{searchQuery}&quot;. Please try
+              another search.
             </p>
           </div>
         )}

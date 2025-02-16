@@ -50,7 +50,7 @@ const WhyChooseUs = () => {
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold font-heading mb-4 text-stone-800">
-            More Than Tools – A Connection to the Divine
+            More Than Tools - A Connection to the Divine
           </h2>
           <p className="text-stone-600 font-body max-w-2xl mx-auto">
             We combine traditional craftsmanship with sacred intentions to

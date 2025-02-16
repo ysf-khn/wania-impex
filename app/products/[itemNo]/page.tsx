@@ -1,6 +1,5 @@
 import { groq } from "next-sanity";
 import { client } from "@/sanity/lib/client";
-import Image from "next/image";
 import { ImageCarousel } from "@/app/Components/ImageCarousel/ImageCarousel";
 
 // Query to get all product item numbers for static paths

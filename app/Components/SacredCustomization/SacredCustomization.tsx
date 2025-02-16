@@ -38,8 +38,8 @@ const SacredCustomization = () => {
               <blockquote className="text-center text-amber-100">
                 <Sparkles className="mx-auto mb-4" size={24} />
                 <p className="font-body italic mb-4">
-                  "They made my dream mandala altar plate reality - exactly as I
-                  envisioned during meditation"
+                  &quot;They made my dream mandala altar plate reality - exactly
+                  as I envisioned during meditation&quot;
                 </p>
                 <cite className="font-heading text-sm not-italic">
                   - Priya, Temple Architect

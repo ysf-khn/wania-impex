@@ -2,7 +2,6 @@ import React from "react";
 import {
   Instagram,
   Facebook,
-  Leaf,
   Mountain,
   MapPin,
   Phone,
