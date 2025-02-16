@@ -171,7 +171,7 @@ export const structure: StructureResolver = (S) =>
                   S.documentList()
                     .title("T Light Holders / Incense Holders")
                     .filter(
-                      '_type == "product" && itemCategory == "t-light-holders-incense-holders"'
+                      '_type == "product" && itemCategory == "t-light-holders-incense-burners"'
                     )
                     .defaultOrdering([{ field: "itemNo", direction: "asc" }])
                 ),

@@ -1,15 +1,16 @@
 import { groq } from "next-sanity";
 import { client } from "@/sanity/lib/client";
 import { ImageCarousel } from "@/app/Components/ImageCarousel/ImageCarousel";
+// import { Card, CardContent } from "@/components/ui/card";
+import { ProductDetailsClient } from "@/app/Components/ProductDetailsClient";
 
-// Query to get all product item numbers for static paths
+// Existing queries remain the same
 const productPathsQuery = groq`
   *[_type == "product"]{
     itemNo
   }
 `;
 
-// Query to get detailed product data
 const productQuery = groq`
   *[_type == "product" && itemNo == $itemNo][0]{
     _id,
@@ -24,7 +25,6 @@ const productQuery = groq`
   }
 `;
 
-// Generate static params for all products
 export async function generateStaticParams() {
   const products = await client.fetch(productPathsQuery);
   return products.map((product: { itemNo: string }) => ({
@@ -34,21 +34,18 @@ export async function generateStaticParams() {
 
 export const revalidate = 60;
 
-interface ProductPageProps {
-  params: {
-    itemNo: string;
-  };
-}
-
-// Helper function to format the category string
 const formatCategory = (category: string) => {
   return category
-    .split("-") // Split by dashes
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize each word
-    .join(" "); // Join with spaces
+    .split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
 };
 
-export default async function ProductPage({ params }: ProductPageProps) {
+export default async function ProductPage({
+  params,
+}: {
+  params: { itemNo: string };
+}) {
   const { itemNo } = params;
   const product = await client.fetch(productQuery, { itemNo });
 
@@ -56,97 +53,68 @@ export default async function ProductPage({ params }: ProductPageProps) {
     return <div>Product Not Found</div>;
   }
 
-  // Format the category
   const formattedCategory = formatCategory(product.itemCategory);
 
   return (
-    <div className="h-[80vh] bg-stone-50">
-      <div className="container mx-auto px-4 md:px-8 py-28">
-        <div className="bg-white rounded-2xl p-8 shadow-sm">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Product Images */}
-            <div className="relative">
+    <div className="min-h-screen bg-gradient-to-b from-stone-50 to-amber-50">
+      <div className="container mx-auto px-4 md:px-8 py-16">
+        <nav className="mb-8">
+          <p className="text-sm text-stone-600">
+            Home / {formattedCategory} / {product.itemName}
+          </p>
+        </nav>
+
+        <div className="overflow-hidden bg-white/80 backdrop-blur-sm">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-8">
+            {/* Left Column - Images */}
+            <div className="relative group">
               <ImageCarousel
                 images={product.images}
                 productName={product.itemName}
               />
             </div>
 
-            {/* Product Details */}
-            <div>
-              <h1 className="text-3xl font-heading font-bold text-stone-800 mb-4">
-                {product.itemName}
-              </h1>
-
-              {/* Item Number and Category */}
-              <div className="text-stone-600 font-body mb-4">
-                <p className="mb-2">
-                  <span className="text-amber-600 font-semibold">Item No:</span>{" "}
-                  {product.itemNo}
-                </p>
-                <p className="mb-2">
-                  <span className="text-amber-600 font-semibold">
-                    Category:
-                  </span>{" "}
-                  {formattedCategory}
-                </p>
+            {/* Right Column - Details */}
+            <div className="space-y-6">
+              <div>
+                <h1 className="text-4xl font-heading font-bold text-stone-800 mb-2">
+                  {product.itemName}
+                </h1>
+                <p className="text-lg text-stone-600">{formattedCategory}</p>
               </div>
 
-              {/* Design and Finish */}
-              {(product.design || product.finish) && (
-                <div className="text-stone-600 font-body mb-4">
+              <div className="bg-amber-50 rounded-lg p-4">
+                <h2 className="font-semibold text-amber-800 mb-2">
+                  Product Details
+                </h2>
+                <div className="grid grid-cols-2 gap-4 text-sm">
+                  <div>
+                    <p className="text-stone-600">Item No</p>
+                    <p className="font-medium">{product.itemNo}</p>
+                  </div>
                   {product.design && (
-                    <p className="mb-2">
-                      <span className="text-amber-600 font-semibold">
-                        Design:
-                      </span>{" "}
-                      {product.design}
-                    </p>
+                    <div>
+                      <p className="text-stone-600">Design</p>
+                      <p className="font-medium">{product.design}</p>
+                    </div>
                   )}
                   {product.finish && (
-                    <p>
-                      <span className="text-amber-600 font-semibold">
-                        Finish:
-                      </span>{" "}
-                      {product.finish}
-                    </p>
+                    <div>
+                      <p className="text-stone-600">Finish</p>
+                      <p className="font-medium">{product.finish}</p>
+                    </div>
                   )}
-                </div>
-              )}
-
-              {/* Colors */}
-              {product.colors && product.colors.length > 0 && (
-                <div className="text-stone-600 font-body mb-4">
-                  <p className="mb-2">
-                    <span className="text-amber-600 font-semibold">
-                      Colors:
-                    </span>{" "}
-                    {product.colors.join(", ")}
-                  </p>
-                </div>
-              )}
-
-              {/* Sizes and Prices */}
-              <div className="mt-6">
-                <h2 className="text-xl font-heading font-bold text-stone-800 mb-4">
-                  Available Sizes & Prices
-                </h2>
-                <div className="space-y-2">
-                  {product.sizes.map(
-                    (size: { size: string; price: number }) => (
-                      <div
-                        key={size.size}
-                        className="flex justify-between items-center p-3 bg-stone-50 rounded-lg"
-                      >
-                        <span className="font-semibold">{size.size}</span>
-                        <span className="text-amber-600 font-bold">
-                          USD {size.price.toFixed(2)}
-                        </span>
-                      </div>
-                    )
+                  {product.colors && (
+                    <div>
+                      <p className="text-stone-600">Colors</p>
+                      <p className="font-medium">{product.colors.join(", ")}</p>
+                    </div>
                   )}
                 </div>
               </div>
+
+              {/* Client Component for Interactive Elements */}
+              <ProductDetailsClient sizes={product.sizes} />
             </div>
           </div>
         </div>

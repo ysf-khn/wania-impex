@@ -50,8 +50,8 @@ export default defineType({
           { title: "Storage Shelves", value: "storage-shelves" },
           { title: "Ting Shas", value: "ting-shas" },
           {
-            title: "T Light Holders / Incense Holders",
-            value: "t-light-holders-incense-holders",
+            title: "T Light Holders / Incense Burners",
+            value: "t-light-holders-incense-burners",
           },
           {
             title: "Trinket / Storage Dishes",

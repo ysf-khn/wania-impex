@@ -155,7 +155,7 @@ export const categories = [
   {
     id: 20,
     name: "Trinkets / Storage Dishes",
-    slug: "trinkets-storage-dishes",
+    slug: "trinket-storage-dishes",
     image: "/categories/trinket.jpg",
     description: "Decorative dishes for storing small sacred items.",
     isHighlighted: false,
