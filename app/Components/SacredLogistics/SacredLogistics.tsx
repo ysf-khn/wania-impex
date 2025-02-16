@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  Leaf,
-  Globe,
-  ShieldCheck,
-  PackageCheck,
-  Handshake,
-} from "lucide-react";
+import { Leaf, Globe, ShieldCheck, PackageCheck } from "lucide-react";
 
 const SacredLogistics = () => {
   return (

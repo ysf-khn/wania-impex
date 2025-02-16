@@ -1,5 +1,4 @@
 import FeaturedCategories from "@/app/Components/FeaturedCategories/FeaturedCategories";
-import Footer from "@/app/Components/Footer/Footer";
 import Hero from "@/app/Components/Hero/Hero";
 import SacredCustomization from "@/app/Components/SacredCustomization/SacredCustomization";
 import SacredLogistics from "@/app/Components/SacredLogistics/SacredLogistics";
