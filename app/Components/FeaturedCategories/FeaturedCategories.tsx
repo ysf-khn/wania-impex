@@ -63,10 +63,11 @@ const FeaturedCategories = () => {
               className={`flex flex-col md:flex-row gap-8 items-center ${
                 category.featured ? "bg-amber-50/50 rounded-2xl p-8" : ""
               }`}
+              // Preserve desktop alternating layout
               style={{ flexDirection: index % 2 === 0 ? "row" : "row-reverse" }}
             >
-              {/* Image Container */}
-              <div className="w-full md:w-1/2">
+              {/* Image Container - Always first on mobile */}
+              <div className="w-full md:w-1/2 order-1 md:order-none">
                 <div
                   className={`relative h-[400px] w-full rounded-xl overflow-hidden ${
                     category.featured ? "shadow-lg" : ""
@@ -82,8 +83,8 @@ const FeaturedCategories = () => {
                 </div>
               </div>
 
-              {/* Content Container */}
-              <div className="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left">
+              {/* Content Container - Always second on mobile */}
+              <div className="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left order-2 md:order-none">
                 <div className="flex items-center gap-2 mb-2">
                   {category.featured && (
                     <Sparkles className="text-amber-600" size={20} />

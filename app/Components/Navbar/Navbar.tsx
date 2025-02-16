@@ -4,6 +4,7 @@ import {
   ChevronDownIcon,
   XMarkIcon,
 } from "@heroicons/react/24/solid";
+import Link from "next/link";
 import React, { useState, useEffect } from "react";
 
 const Navbar = () => {
@@ -75,12 +76,14 @@ const Navbar = () => {
       }`}
     >
       {/* Desktop Navbar */}
-      <div className="font-body backdrop-blur-md bg-white/80 border-b border-gray-200 rounded-full mt-5 w-[90%] mx-auto shadow-sm">
+      <div className="font-body backdrop-blur-md bg-white/80 rounded-full border border-gray-200 mt-5 w-[95%] mx-auto ">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
             <div className="flex-shrink-0">
-              <span className="text-2xl text-black font-bold">Wania Impex</span>
+              <span className="text-2xl text-black font-bold">
+                <Link href="/">Wania Impex</Link>
+              </span>
             </div>
 
             {/* Desktop Navigation */}
@@ -120,12 +123,12 @@ const Navbar = () => {
                         <ul className="space-y-2">
                           {category.subcategories.map((sub) => (
                             <li key={sub}>
-                              <a
+                              <Link
                                 href="#"
                                 className="text-gray-700 hover:text-orange-600 block py-1 transition-colors"
                               >
                                 {sub}
-                              </a>
+                              </Link>
                             </li>
                           ))}
                         </ul>
@@ -135,24 +138,24 @@ const Navbar = () => {
                 </div>
               </div>
 
-              <a
-                href="#"
+              <Link
+                href="/about-us"
                 className="text-black hover:text-orange-600 transition-colors"
               >
                 About Us
-              </a>
-              <a
+              </Link>
+              <Link
                 href="#"
                 className="text-black hover:text-orange-600 transition-colors"
               >
-                Gallery
-              </a>
-              <a
+                Netherlands
+              </Link>
+              <Link
                 href="#"
                 className="text-black hover:text-orange-600 transition-colors"
               >
                 Contact
-              </a>
+              </Link>
             </div>
 
             {/* Mobile Menu Button */}
@@ -225,12 +228,12 @@ const Navbar = () => {
                     <ul className="pl-3 space-y-1">
                       {category.subcategories.map((sub) => (
                         <li key={sub}>
-                          <a
+                          <Link
                             href="#"
                             className="block text-gray-600 hover:text-orange-600"
                           >
                             {sub}
-                          </a>
+                          </Link>
                         </li>
                       ))}
                     </ul>
@@ -238,6 +241,24 @@ const Navbar = () => {
                 ))}
               </div>
             )}
+            <Link
+              href="/about-us"
+              className="block text-black font-medium py-3 border-b border-gray-200 hover:text-orange-600"
+            >
+              About Us
+            </Link>
+            <Link
+              href="#"
+              className="block text-black font-medium py-3 border-b border-gray-200 hover:text-orange-600"
+            >
+              Netherlands
+            </Link>
+            <Link
+              href="#"
+              className="block text-black font-medium py-3 border-b border-gray-200 hover:text-orange-600"
+            >
+              Contact
+            </Link>
           </nav>
         </div>
       </div>

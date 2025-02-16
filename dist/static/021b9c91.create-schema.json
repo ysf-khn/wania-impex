@@ -1,0 +1,366 @@
+[
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "itemNo",
+        "type": "string",
+        "title": "Item Number"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "itemName",
+        "type": "string"
+      },
+      {
+        "options": {
+          "list": [
+            {
+              "title": "Altar Tables",
+              "value": "altar-tables"
+            },
+            {
+              "title": "Altar Tools",
+              "value": "altar-tools"
+            },
+            {
+              "title": "Aluminium Incense Holders",
+              "value": "aluminium-incense-holders"
+            },
+            {
+              "title": "Brass Grids / Altar Grids",
+              "value": "brass-grids-altar-grids"
+            },
+            {
+              "title": "Brass Incense / Fragrance Burners",
+              "value": "brass-incense-fragrance-burners"
+            },
+            {
+              "title": "Cauldrons",
+              "value": "cauldrons"
+            },
+            {
+              "title": "Copper Bracelets",
+              "value": "copper-bracelets"
+            },
+            {
+              "title": "Copper Grids",
+              "value": "copper-grids"
+            },
+            {
+              "title": "Herb Grinders",
+              "value": "herb-grinders"
+            },
+            {
+              "title": "Incense Accessories",
+              "value": "incense-accessories"
+            },
+            {
+              "title": "Lanterns",
+              "value": "lanterns"
+            },
+            {
+              "title": "Metal Wall Hangings",
+              "value": "metal-wall-hangings"
+            },
+            {
+              "title": "Offering Bowls",
+              "value": "offering-bowls"
+            },
+            {
+              "title": "Singing Bowls",
+              "value": "singing-bowls"
+            },
+            {
+              "title": "Storage Shelves",
+              "value": "storage-shelves"
+            },
+            {
+              "title": "Ting Shas",
+              "value": "ting-shas"
+            },
+            {
+              "title": "T Light Holders / Incense Burners",
+              "value": "t-light-holders-incense-burners"
+            },
+            {
+              "title": "Trinket / Storage Dishes",
+              "value": "trinket-storage-dishes"
+            },
+            {
+              "title": "Wooden Wall Hangings",
+              "value": "wooden-wall-hangings"
+            },
+            {
+              "title": "Wooden Incense Holders / Grids",
+              "value": "wooden-incense-holders-grids"
+            }
+          ]
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "valid",
+                "constraint": [
+                  "altar-tables",
+                  "altar-tools",
+                  "aluminium-incense-holders",
+                  "brass-grids-altar-grids",
+                  "brass-incense-fragrance-burners",
+                  "cauldrons",
+                  "copper-bracelets",
+                  "copper-grids",
+                  "herb-grinders",
+                  "incense-accessories",
+                  "lanterns",
+                  "metal-wall-hangings",
+                  "offering-bowls",
+                  "singing-bowls",
+                  "storage-shelves",
+                  "ting-shas",
+                  "t-light-holders-incense-burners",
+                  "trinket-storage-dishes",
+                  "wooden-wall-hangings",
+                  "wooden-incense-holders-grids"
+                ]
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "itemCategory",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              },
+              {
+                "flag": "min",
+                "constraint": 1
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "of": [
+          {
+            "fields": [
+              {
+                "validation": [
+                  {
+                    "rules": [
+                      {
+                        "flag": "presence",
+                        "constraint": "required"
+                      }
+                    ],
+                    "level": "error"
+                  }
+                ],
+                "name": "size",
+                "type": "string"
+              },
+              {
+                "validation": [
+                  {
+                    "rules": [
+                      {
+                        "flag": "presence",
+                        "constraint": "required"
+                      },
+                      {
+                        "flag": "min",
+                        "constraint": 0
+                      }
+                    ],
+                    "level": "error"
+                  }
+                ],
+                "name": "price",
+                "type": "number"
+              }
+            ],
+            "type": "object",
+            "name": "sizeOption"
+          }
+        ],
+        "name": "sizes",
+        "type": "array",
+        "title": "Sizes & Prices"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              },
+              {
+                "flag": "min",
+                "constraint": 1
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "of": [
+          {
+            "options": {
+              "hotspot": true
+            },
+            "type": "image"
+          }
+        ],
+        "name": "images",
+        "type": "array",
+        "title": "Product Images"
+      },
+      {
+        "name": "design",
+        "type": "string"
+      },
+      {
+        "name": "finish",
+        "type": "string"
+      },
+      {
+        "of": [
+          {
+            "type": "string"
+          }
+        ],
+        "name": "colors",
+        "type": "array"
+      },
+      {
+        "name": "seo",
+        "type": "seo",
+        "title": "SEO Metadata"
+      }
+    ],
+    "name": "product",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              },
+              {
+                "flag": "max",
+                "constraint": 60
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "metaTitle",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              },
+              {
+                "flag": "max",
+                "constraint": 160
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "metaDescription",
+        "type": "text"
+      },
+      {
+        "description": "Add relevant keywords separated by commas.",
+        "of": [
+          {
+            "type": "string"
+          }
+        ],
+        "name": "metaKeywords",
+        "type": "array"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Preferred URL for search engines (avoid duplicate content issues).",
+        "name": "canonicalUrl",
+        "type": "url",
+        "title": "Canonical URL"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "description": "Image for social media sharing (Facebook, Twitter, etc.).",
+        "name": "ogImage",
+        "type": "image",
+        "title": "Open Graph Image"
+      }
+    ],
+    "name": "seo",
+    "type": "object",
+    "title": "SEO Metadata"
+  }
+]

@@ -21,15 +21,26 @@ export function ImageCarousel({ images, productName }: ImageCarouselProps) {
   };
 
   return (
-    <div className="relative aspect-square rounded-lg overflow-hidden group">
+    <div className="relative aspect-square md:aspect-auto md:h-[500px] rounded-lg overflow-hidden group">
       <div className="relative w-full h-full">
-        <Image
-          src={images[currentImage]}
-          alt={`${productName} - Image ${currentImage + 1}`}
-          fill
-          className="object-contain p-2"
-          sizes="(max-width: 768px) 100vw, 50vw"
-        />
+        {images.map((image, index) => (
+          <div
+            key={image}
+            className={`absolute w-full h-full transition-transform duration-500 ease-in-out`}
+            style={{
+              transform: `translateX(${(index - currentImage) * 100}%)`,
+            }}
+          >
+            <Image
+              src={image}
+              alt={`${productName} - Image ${index + 1}`}
+              fill
+              className="object-contain p-2"
+              sizes="(max-width: 768px) 100vw, 50vw"
+              priority={index === 0}
+            />
+          </div>
+        ))}
       </div>
 
       {/* Navigation Arrows */}

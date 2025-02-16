@@ -81,7 +81,7 @@ const SacredLogistics = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="p-4 border border-stone-100 rounded-lg">
                   <h4 className="font-heading text-amber-600 mb-2">
-                    Sacred Shipment Guardianship
+                    Shipment Guardianship
                   </h4>
                   <div className="space-y-2">
                     <p className="font-body text-sm text-stone-600 flex items-center gap-2">
@@ -113,12 +113,12 @@ const SacredLogistics = () => {
           </div>
         </div>
 
-        <div className="mt-12 text-center">
+        {/* <div className="mt-12 text-center">
           <button className="font-cta px-8 py-3 bg-amber-500/90 hover:bg-amber-500 text-stone-900 rounded-lg transition-colors flex items-center gap-2 mx-auto">
             <Handshake size={20} />
             <span>Begin Sacred Collaboration</span>
           </button>
-        </div>
+        </div> */}
       </div>
     </section>
   );

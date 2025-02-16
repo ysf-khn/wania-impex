@@ -28,22 +28,19 @@ const SacredCustomization = () => {
           {/* Process Visualization */}
           <div className="relative h-[500px] rounded-2xl overflow-hidden border border-stone-100">
             <Image
-              src="/custom-process.jpg"
+              src="/aboutUs/aboutus6.jpg"
               alt="Custom creation process"
               fill
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 50vw"
             />
-            <div className="absolute inset-0 bg-stone-900/40 flex items-center justify-center p-8">
+            <div className="absolute inset-0 bg-stone-900/60 flex items-center justify-center p-8">
               <blockquote className="text-center text-amber-100">
                 <Sparkles className="mx-auto mb-4" size={24} />
                 <p className="font-body italic mb-4">
                   &quot;They made my dream mandala altar plate reality - exactly
                   as I envisioned during meditation&quot;
                 </p>
-                <cite className="font-heading text-sm not-italic">
-                  - Priya, Temple Architect
-                </cite>
               </blockquote>
             </div>
           </div>
@@ -115,7 +112,7 @@ const SacredCustomization = () => {
         <div className="mt-16 grid grid-cols-2 md:grid-csssss-4 gap-4 text-center">
           {[
             { label: "100% Vision Alignment", icon: Sparkles },
-            { label: "Sacred Material Sourcing", icon: Leaf },
+            { label: "Ethical Material Sourcing", icon: Leaf },
             { label: "Discreet Global Shipping", icon: Globe },
             { label: "Timeless Ritual Craft", icon: Omega },
           ].map((badge, index) => (

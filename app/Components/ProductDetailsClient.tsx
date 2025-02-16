@@ -1,8 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Heart, Share2, ZoomIn, ShoppingCart } from "lucide-react";
-// import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Heart, Share2, ZoomIn, MessageCircle } from "lucide-react";
 
 interface ProductDetailsProps {
   sizes: Array<{
@@ -54,21 +53,17 @@ export function ProductDetailsClient({ sizes }: ProductDetailsProps) {
 
       <div className="pt-6 border-t">
         <button
-          className="w-full bg-amber-600 text-white py-4 px-6 rounded-lg font-semibold flex items-center justify-center space-x-2 hover:bg-amber-700 transition-colors"
+          className="w-full bg-amber-600 text-white py-4 px-6 rounded-lg font-semibold flex items-center justify-center space-x-2 hover:bg-green-700 transition-colors"
           onClick={() =>
-            selectedSize && console.log(`Added size ${selectedSize} to cart`)
+            window.open(
+              "https://wa.me/1234567890?text=Hi%2C%20I%20would%20like%20to%20inquire%20about%20your%20product"
+            )
           }
         >
-          <ShoppingCart className="w-5 h-5" />
-          <span>Add to Cart</span>
+          <MessageCircle className="w-5 h-5" />
+          <span>Inquire on WhatsApp</span>
         </button>
       </div>
-
-      {/* <Alert className="bg-stone-100 border-stone-200">
-        <AlertDescription>
-          Free shipping on orders over $50. Easy returns within 30 days.
-        </AlertDescription>
-      </Alert> */}
     </div>
   );
 }

@@ -14,7 +14,6 @@ const page = () => {
       <SacredLogistics />
       <SacredCustomization />
       <WhyChooseUs />
-      <Footer />
     </div>
   );
 };

@@ -44,7 +44,7 @@ const Footer = () => {
             <div className="mt-4 flex items-center gap-3">
               <Phone className="text-amber-500/80" size={20} />
               <Link
-                href="tel:+911234567890"
+                href="tel:+919355254435"
                 className="font-body text-stone-400 hover:text-amber-400 transition-colors"
               >
                 +91 93552 54435
@@ -143,7 +143,7 @@ const Footer = () => {
             rel="noopener noreferrer"
             className="font-body text-sm text-stone-500 hover:text-amber-500 transition-colors flex items-center gap-1"
           >
-            <span>Digital Craftsmanship by</span>
+            <span>Experience Crafted by</span>
             <span className="bg-gradient-to-r from-amber-400 to-amber-500 bg-clip-text text-transparent font-medium">
               Weekend Labs
             </span>
