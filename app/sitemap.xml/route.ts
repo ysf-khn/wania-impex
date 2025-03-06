@@ -2,9 +2,28 @@ import { groq } from "next-sanity";
 import { client } from "@/sanity/lib/client";
 import { NextResponse } from "next/server";
 
+// Define type for Sanity slug
+interface Slug {
+  _type: "slug";
+  current: string;
+}
+
+// Define type for Category document
+interface Category {
+  slug: Slug;
+}
+
+// Define type for Product document
+interface Product {
+  slug: Slug;
+  category: Slug;
+}
+
 const fetchData = async () => {
-  const categories = await client.fetch(groq`*[_type == "category"]{slug}`);
-  const products = await client.fetch(
+  const categories = await client.fetch<Category[]>(
+    groq`*[_type == "category"]{slug}`
+  );
+  const products = await client.fetch<Product[]>(
     groq`*[_type == "product"]{slug, "category": category->slug}`
   );
 
@@ -17,9 +36,9 @@ export async function GET() {
 
   const staticPages = ["", "all-categories"];
 
-  const categoryPages = categories.map(({ slug }: any) => `${slug.current}`);
+  const categoryPages = categories.map(({ slug }) => `${slug.current}`);
   const productPages = products.map(
-    ({ slug, category }: any) => `${category.current}/${slug.current}`
+    ({ slug, category }) => `${category.current}/${slug.current}`
   );
 
   const allPages = [...staticPages, ...categoryPages, ...productPages];
