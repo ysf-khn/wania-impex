@@ -53,14 +53,24 @@ const Page = () => {
           {filteredCategories.map((category) => (
             <div
               key={category.id}
-              className={`flex flex-col p-6 rounded-2xl ${
+              className={`flex flex-col p-6 rounded-2xl transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl ${
                 category.isHighlighted
                   ? "bg-amber-50 border-2 border-amber-500"
                   : "bg-white border border-gray-300"
               }`}
+              style={{
+                transformStyle: "preserve-3d",
+                perspective: "1000px",
+              }}
             >
               {/* Image */}
-              <div className="relative w-full h-48 mb-6">
+              <div
+                className="relative w-full h-48 mb-6 transition-transform duration-300 hover:scale-105 overflow-hidden rounded-lg"
+                style={{
+                  transformStyle: "preserve-3d",
+                  transform: "translateZ(20px)",
+                }}
+              >
                 <Image
                   src={category.image}
                   alt={category.name}
@@ -71,7 +81,13 @@ const Page = () => {
               </div>
 
               {/* Content */}
-              <div className="flex-1">
+              <div
+                className="flex-1"
+                style={{
+                  transformStyle: "preserve-3d",
+                  transform: "translateZ(10px)",
+                }}
+              >
                 <h2 className="text-xl font-heading font-bold text-stone-800 mb-2">
                   {category.name}
                 </h2>
@@ -79,12 +95,16 @@ const Page = () => {
                   {category.description}
                 </p>
                 <Link
-                  href={`/${category.slug}`} // Replace with your actual category route
-                  className={`font-cta px-6 py-2 rounded-lg transition-colors inline-block ${
+                  href={`/${category.slug}`}
+                  className={`font-cta px-6 py-2 rounded-lg transition-all duration-300 inline-block hover:shadow-md ${
                     category.isHighlighted
                       ? "bg-amber-500 hover:bg-amber-600 text-stone-900"
                       : "bg-stone-100 hover:bg-stone-200 text-stone-800"
                   }`}
+                  style={{
+                    transformStyle: "preserve-3d",
+                    transform: "translateZ(30px)",
+                  }}
                 >
                   Explore All
                 </Link>

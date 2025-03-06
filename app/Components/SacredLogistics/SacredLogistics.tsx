@@ -22,27 +22,27 @@ const SacredLogistics = () => {
                 <Leaf className="text-amber-600" size={28} />
               </div>
               <h3 className="text-2xl font-heading font-bold text-stone-800">
-                Blessed Packaging Solutions
+                Premium Manufacturing & Export Solutions
               </h3>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {[
                 {
-                  title: "Natural Material Wrapping",
-                  desc: "Herb-infused cotton, handmade paper & plant-based inks",
+                  title: "High-Volume Manufacturing",
+                  desc: "Advanced facilities producing 50,000+ units monthly with 99.7% quality rate",
                 },
                 {
-                  title: "Reusable Sacred Caskets",
-                  desc: "Hand-carved wooden boxes for lifelong ritual use",
+                  title: "Global Export Network",
+                  desc: "Shipping to 75+ countries with customs compliance documentation included",
                 },
                 {
-                  title: "Energy-Cleared Containers",
-                  desc: "Smudge-cleaned packaging with crystal charging",
+                  title: "Scale & Customization",
+                  desc: "Bulk orders from 1,000 to 100,000 units with consistent quality control",
                 },
                 {
-                  title: "Bespoke Branding",
-                  desc: "Custom spiritual symbols & mantra engravings",
+                  title: "Just-in-Time Production",
+                  desc: "Efficient supply chain with 15-day turnaround for standard bulk orders",
                 },
               ].map((item, index) => (
                 <div key={index} className="flex items-start gap-3">

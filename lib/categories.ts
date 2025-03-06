@@ -147,7 +147,7 @@ export const categories = [
   {
     id: 19,
     name: "Ting Shas (Tibetan Cymbals)",
-    slug: "ting-shas-tibetan-cymbals",
+    slug: "ting-shas",
     image: "/categories/tingsha.jpg",
     description: "Traditional cymbals used for meditation and sound healing.",
     isHighlighted: false,

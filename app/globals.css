@@ -7,11 +7,12 @@ body {
 }
 
 .hero {
-  --dot-bg: #f3f4f6;
+  /* --dot-bg: #f3f4f6;
   --dot-color: #000000;
   --dot-size: 1px;
   --dot-space: 50px;
-  background: linear-gradient(
+  background:
+    linear-gradient(
         90deg,
         var(--dot-bg) calc(var(--dot-space) - var(--dot-size)),
         transparent 1%
@@ -28,7 +29,7 @@ body {
 @layer utilities {
   .text-balance {
     text-wrap: balance;
-  }
+  } */
 }
 
 @layer base {

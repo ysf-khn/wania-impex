@@ -3,9 +3,8 @@ import { client } from "@/sanity/lib/client";
 import { ImageCarousel } from "@/app/Components/ImageCarousel/ImageCarousel";
 import { ProductDetailsClient } from "@/app/Components/ProductDetailsClient";
 import Link from "next/link";
-import { TagIcon } from "@heroicons/react/24/solid";
+import { InformationCircleIcon } from "@heroicons/react/24/solid";
 
-// Queries remain the same
 const productPathsQuery = groq`
   *[_type == "product"]{
     itemNo
@@ -22,6 +21,9 @@ const productQuery = groq`
     design,
     finish,
     colors,
+    inside,
+    outside,
+    note,
     "images": images[].asset->url
   }
 `;
@@ -35,12 +37,12 @@ export async function generateStaticParams() {
 
 export const revalidate = 60;
 
-const formatCategory = (category: string) => {
-  return category
-    .split("-")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ");
-};
+// const formatCategory = (category: string) => {
+//   return category
+//     .split("-")
+//     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+//     .join(" ");
+// };
 
 export default async function ProductPage({
   params,
@@ -54,7 +56,7 @@ export default async function ProductPage({
     return <div>Product Not Found</div>;
   }
 
-  const formattedCategory = formatCategory(product.itemCategory);
+  // const formattedCategory = formatCategory(product.itemCategory);
 
   return (
     <div className="min-h-screen bg-stone-50">
@@ -69,10 +71,9 @@ export default async function ProductPage({
         </div>
 
         <div className="overflow-hidden bg-white/80 backdrop-blur-sm rounded-md">
-          {/* Modified grid container with height control */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-8 md:h-[550px] ">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-8 md:min-h-[650px]">
             {/* Left Column - Images with height adjustment */}
-            <div className="relative group md:h-3/4">
+            <div className="relative group md:h-full">
               <ImageCarousel
                 images={product.images}
                 productName={product.itemName}
@@ -85,10 +86,6 @@ export default async function ProductPage({
                 <h1 className="text-4xl font-heading font-bold text-stone-800 mb-2">
                   {product.itemName}
                 </h1>
-                <p className="text-lg text-stone-600">
-                  <TagIcon className="h-4 w-4 inline mr-1" />{" "}
-                  {formattedCategory}
-                </p>
               </div>
 
               <div className="bg-amber-50 rounded-lg p-4">
@@ -121,7 +118,41 @@ export default async function ProductPage({
                 </div>
               </div>
 
-              <ProductDetailsClient sizes={product.sizes} />
+              {/* Sizes Component */}
+              <ProductDetailsClient
+                sizes={product.sizes}
+                itemNo={product.itemNo}
+                itemName={product.itemName}
+              />
+
+              {/* Optional Inside/Outside Details */}
+              {(product.inside || product.outside) && (
+                <div className="bg-stone-100 rounded-lg p-4">
+                  <h2 className="font-semibold text-stone-800 mb-2">
+                    Additional Details
+                  </h2>
+                  {product.inside && (
+                    <div className="mb-2">
+                      <p className="text-stone-600 text-sm">Inside</p>
+                      <p className="text-stone-800">{product.inside}</p>
+                    </div>
+                  )}
+                  {product.outside && (
+                    <div>
+                      <p className="text-stone-600 text-sm">Outside</p>
+                      <p className="text-stone-800">{product.outside}</p>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* Optional Note Section */}
+              {product.note && (
+                <div className="bg-amber-50 rounded-lg p-4 flex items-center space-x-2">
+                  <InformationCircleIcon className="h-5 w-5 text-amber-600" />
+                  <p className="text-amber-800">{product.note}</p>
+                </div>
+              )}
             </div>
           </div>
         </div>

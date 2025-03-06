@@ -1,12 +1,148 @@
+// import React from "react";
+// import {
+//   DraftingCompass,
+//   Wand,
+//   Sparkles,
+//   Handshake,
+//   Leaf,
+//   Globe,
+//   Omega,
+// } from "lucide-react";
+// import Image from "next/image";
+
+// const SacredCustomization = () => {
+//   return (
+//     <section className="py-16 px-4 md:px-8 border-t border-stone-200 bg-stone-50">
+//       <div className="container mx-auto">
+//         <div className="text-center mb-16">
+//           <h2 className="text-3xl md:text-4xl font-bold font-heading mb-4 text-stone-800">
+//             Manifest Your Sacred Vision
+//           </h2>
+//           <p className="text-stone-600 font-body max-w-2xl mx-auto">
+//             Transform your spiritual concepts into consecrated reality through
+//             our artisan collaboration
+//           </p>
+//         </div>
+
+//         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+//           {/* Process Visualization */}
+//           <div className="relative h-[500px] rounded-2xl overflow-hidden border border-stone-100">
+//             <Image
+//               src="/aboutUs/aboutus6.jpg"
+//               alt="Custom creation process"
+//               fill
+//               className="object-cover"
+//               sizes="(max-width: 768px) 100vw, 50vw"
+//             />
+//             <div className="absolute inset-0 bg-stone-900/60 flex items-center justify-center p-8">
+//               <blockquote className="text-center text-amber-100">
+//                 <Sparkles className="mx-auto mb-4" size={24} />
+//                 <p className="font-body italic mb-4">
+//                   &quot;They made my dream mandala altar plate reality - exactly
+//                   as I envisioned during meditation&quot;
+//                 </p>
+//               </blockquote>
+//             </div>
+//           </div>
+
+//           {/* Creation Journey */}
+//           <div className="space-y-8">
+//             <div className="flex items-center gap-4 mb-6">
+//               <div className="p-3 bg-amber-500/10 rounded-lg">
+//                 <Wand className="text-amber-600" size={28} />
+//               </div>
+//               <h3 className="text-2xl font-heading font-bold text-stone-800">
+//                 From Vision to Reality
+//               </h3>
+//             </div>
+
+//             <div className="space-y-6">
+//               {[
+//                 {
+//                   icon: DraftingCompass,
+//                   title: "Share Your Divine Inspiration",
+//                   text: "Sketch, describe, or simply share the energy you wish to manifest",
+//                 },
+//                 {
+//                   icon: Sparkles,
+//                   title: "Artisan Energy Alignment",
+//                   text: "Our craftsmen meditate on your vision before creation begins",
+//                 },
+//                 {
+//                   icon: Handshake,
+//                   title: "Sacred Collaboration",
+//                   text: "Prototypes & material samples for your blessing",
+//                 },
+//                 {
+//                   icon: Wand,
+//                   title: "Final Artisan Touch",
+//                   text: "Meticulous finishing and quality assurance by master craftsmen",
+//                 },
+//               ].map((step, index) => (
+//                 <div
+//                   key={index}
+//                   className="flex items-start gap-4 p-4 bg-white rounded-lg border border-stone-100"
+//                 >
+//                   <step.icon
+//                     className="text-amber-600 mt-1 flex-shrink-0"
+//                     size={20}
+//                   />
+//                   <div>
+//                     <h4 className="font-heading text-stone-800 mb-1">
+//                       {step.title}
+//                     </h4>
+//                     <p className="text-stone-600 font-body text-sm">
+//                       {step.text}
+//                     </p>
+//                   </div>
+//                 </div>
+//               ))}
+//             </div>
+
+//             {/* <div className="mt-8">
+//               <button className="font-cta px-8 py-3 bg-amber-500/90 hover:bg-amber-500 text-stone-900 rounded-lg transition-colors flex items-center gap-2 w-full md:w-auto justify-center">
+//                 <DraftingCompass size={20} />
+//                 <span>Begin Sacred Co-Creation</span>
+//               </button>
+//             </div> */}
+//           </div>
+//         </div>
+
+//         {/* Assurance Badges */}
+//         <div className="mt-16 grid grid-cols-2 md:grid-csssss-4 gap-4 text-center">
+//           {[
+//             { label: "100% Vision Alignment", icon: Sparkles },
+//             { label: "Ethical Material Sourcing", icon: Leaf },
+//             { label: "Discreet Global Shipping", icon: Globe },
+//             { label: "Timeless Ritual Craft", icon: Omega },
+//           ].map((badge, index) => (
+//             <div
+//               key={index}
+//               className="p-4 bg-white rounded-xl border border-stone-100"
+//             >
+//               <badge.icon className="mx-auto text-amber-600 mb-2" size={20} />
+//               <span className="font-body text-stone-600 text-sm">
+//                 {badge.label}
+//               </span>
+//             </div>
+//           ))}
+//         </div>
+//       </div>
+//     </section>
+//   );
+// };
+
+// export default SacredCustomization;
+
 import React from "react";
 import {
-  DraftingCompass,
-  Wand,
-  Sparkles,
-  Handshake,
-  Leaf,
+  Factory,
   Globe,
-  Omega,
+  Settings,
+  ShieldCheck,
+  ClipboardList,
+  Truck,
+  Boxes,
 } from "lucide-react";
 import Image from "next/image";
 
@@ -16,67 +152,67 @@ const SacredCustomization = () => {
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold font-heading mb-4 text-stone-800">
-            Manifest Your Sacred Vision
+            Global Manufacturing Partnership
           </h2>
           <p className="text-stone-600 font-body max-w-2xl mx-auto">
-            Transform your spiritual concepts into consecrated reality through
-            our artisan collaboration
+            Leverage our industrial-scale production and export expertise for
+            OEM/ODM orders
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Process Visualization */}
+          {/* Production Visualization */}
           <div className="relative h-[500px] rounded-2xl overflow-hidden border border-stone-100">
             <Image
               src="/aboutUs/aboutus6.jpg"
-              alt="Custom creation process"
+              alt="Mass production facility"
               fill
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 50vw"
             />
             <div className="absolute inset-0 bg-stone-900/60 flex items-center justify-center p-8">
               <blockquote className="text-center text-amber-100">
-                <Sparkles className="mx-auto mb-4" size={24} />
+                <Boxes className="mx-auto mb-4" size={24} />
                 <p className="font-body italic mb-4">
-                  &quot;They made my dream mandala altar plate reality - exactly
-                  as I envisioned during meditation&quot;
+                  &quot;Consistently delivered 50K+ monthly units to our global
+                  retail chain&quot;
                 </p>
               </blockquote>
             </div>
           </div>
 
-          {/* Creation Journey */}
+          {/* Production Journey */}
           <div className="space-y-8">
             <div className="flex items-center gap-4 mb-6">
               <div className="p-3 bg-amber-500/10 rounded-lg">
-                <Wand className="text-amber-600" size={28} />
+                <Factory className="text-amber-600" size={28} />
               </div>
               <h3 className="text-2xl font-heading font-bold text-stone-800">
-                From Vision to Reality
+                Bulk Order Process
               </h3>
             </div>
 
             <div className="space-y-6">
               {[
                 {
-                  icon: DraftingCompass,
-                  title: "Share Your Divine Inspiration",
-                  text: "Sketch, describe, or simply share the energy you wish to manifest",
+                  icon: ClipboardList,
+                  title: "Submit Technical Specifications",
+                  text: "Share CAD files or product requirements for immediate quoting",
                 },
                 {
-                  icon: Sparkles,
-                  title: "Artisan Energy Alignment",
-                  text: "Our craftsmen meditate on your vision before creation begins",
+                  icon: Settings,
+                  title: "Prototype Engineering",
+                  text: "3D modeling & sample production within 7-10 working days",
                 },
                 {
-                  icon: Handshake,
-                  title: "Sacred Collaboration",
-                  text: "Prototypes & material samples for your blessing",
+                  icon: ShieldCheck,
+                  title: "Quality Assurance",
+                  text: "Batch testing and compliance certification documentation",
                 },
                 {
-                  icon: Wand,
-                  title: "Final Artisan Touch",
-                  text: "Meticulous finishing and quality assurance by master craftsmen",
+                  icon: Truck,
+                  title: "Global Logistics",
+                  text: "EXW/FOB/DDP solutions with customs clearance support",
                 },
               ].map((step, index) => (
                 <div
@@ -101,20 +237,20 @@ const SacredCustomization = () => {
 
             {/* <div className="mt-8">
               <button className="font-cta px-8 py-3 bg-amber-500/90 hover:bg-amber-500 text-stone-900 rounded-lg transition-colors flex items-center gap-2 w-full md:w-auto justify-center">
-                <DraftingCompass size={20} />
-                <span>Begin Sacred Co-Creation</span>
+                <Package size={20} />
+                <span>Request OEM Pricing</span>
               </button>
             </div> */}
           </div>
         </div>
 
         {/* Assurance Badges */}
-        <div className="mt-16 grid grid-cols-2 md:grid-csssss-4 gap-4 text-center">
+        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
           {[
-            { label: "100% Vision Alignment", icon: Sparkles },
-            { label: "Ethical Material Sourcing", icon: Leaf },
-            { label: "Discreet Global Shipping", icon: Globe },
-            { label: "Timeless Ritual Craft", icon: Omega },
+            { label: "ISO-Certified Production", icon: ShieldCheck },
+            { label: "Global Export Compliance", icon: Globe },
+            { label: "Ethical Bulk Sourcing", icon: Boxes },
+            { label: "On-Time Shipment Guarantee", icon: Truck },
           ].map((badge, index) => (
             <div
               key={index}

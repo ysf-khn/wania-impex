@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  Instagram,
-  Facebook,
-  Mountain,
-  MapPin,
-  Phone,
-  ScanBarcode,
-} from "lucide-react";
+import { Instagram, Facebook, MapPin, Phone, ScanBarcode } from "lucide-react";
 import Link from "next/link";
 
 const Footer = () => {
@@ -21,7 +14,15 @@ const Footer = () => {
           {/* Brand & Address */}
           <div className="flex flex-col gap-4">
             <div className="flex items-center gap-2 mb-4 group">
-              <Mountain className="text-amber-500" size={28} />
+              {/* <Mountain className="text-amber-500" size={28} /> */}
+              {/* <Link href="/">
+                <Image
+                  src="/logo-circle.png"
+                  alt="Wania Impex Logo"
+                  height={50}
+                  width={50}
+                />
+              </Link> */}
               <span className="font-heading text-xl text-stone-100">
                 Wania Impex
               </span>
@@ -59,27 +60,29 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Craftsmanship Statement */}
-          <div className="flex flex-col gap-4 md:border-x md:border-stone-800 md:px-8">
+          {/* Craftsmanship Statement - Improved for small screens */}
+          <div className="flex flex-col gap-4 md:border-x md:border-stone-800 md:px-8 px-2">
             <div className="flex flex-col gap-4 relative">
-              <p className="font-body text-stone-400 relative">
-                <span className="absolute -left-6 top-2 text-amber-500/30 text-4xl select-none">
-                  “
+              <div className="relative px-6 sm:px-8">
+                <span className="absolute left-0 top-0 text-amber-500/30 text-4xl select-none">
+                  &quot;
                 </span>
-                Custodians of sacred craft, where every artifact is imbued with
-                intention to infuse your space with energy and harmony.
-                <span className="absolute -right-0 bottom-2 text-amber-500/30 text-4xl select-none">
-                  ”
+                <p className="font-body text-stone-400 text-sm sm:text-base">
+                  Custodians of sacred craft, where every artifact is imbued
+                  with intention to infuse your space with energy and harmony.
+                </p>
+                <span className="absolute right-0 bottom-0 text-amber-500/30 text-4xl select-none">
+                  &quot;
                 </span>
-              </p>
+              </div>
 
               {/* Craftsmanship Badge */}
-              <div className="mt-4 flex items-center gap-3 px-4 py-2 border border-amber-500/20 rounded-full w-fit bg-amber-500/5 hover:bg-amber-500/10 transition-colors">
-                <div className="relative h-4 w-4">
+              <div className="mt-2 flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2 border border-amber-500/20 rounded-full w-fit bg-amber-500/5 hover:bg-amber-500/10 transition-colors self-center sm:self-start">
+                <div className="relative h-3 w-3 sm:h-4 sm:w-4">
                   <div className="absolute inset-0 bg-amber-500 rounded-full animate-ping" />
                   <div className="absolute inset-0 bg-amber-500 rounded-full" />
                 </div>
-                <span className="text-sm font-body text-amber-400">
+                <span className="text-xs sm:text-sm font-body text-amber-400">
                   ISO Certified Craftsmanship
                 </span>
               </div>
@@ -95,25 +98,37 @@ const Footer = () => {
             </h4>
 
             <div className="flex gap-4">
-              <button className="p-3 border border-stone-700 rounded-lg hover:bg-stone-800 transition-all duration-300 hover:scale-105 group relative">
-                <Instagram
-                  className="text-stone-300 group-hover:text-amber-400 transition-colors"
-                  size={20}
-                />
-                <span className="absolute -bottom-7 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 text-xs text-amber-400 transition-opacity">
+              <Link
+                href="https://www.instagram.com/wania_impex/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <button className="p-3 border border-stone-700 rounded-lg hover:bg-stone-800 transition-all duration-300 hover:scale-105 group relative">
+                  <Instagram
+                    className="text-stone-300 group-hover:text-amber-400 transition-colors"
+                    size={20}
+                  />
+                </button>
+              </Link>
+              {/* <span className="absolute -bottom-7 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 text-xs text-amber-400 transition-opacity">
                   Craft Stories
-                </span>
-              </button>
+                </span> */}
 
-              <button className="p-3 border border-stone-700 rounded-lg hover:bg-stone-800 transition-all duration-300 hover:scale-105 group relative">
-                <Facebook
-                  className="text-stone-300 group-hover:text-amber-400 transition-colors"
-                  size={20}
-                />
-                <span className="absolute -bottom-7 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 text-xs text-amber-400 transition-opacity">
+              <Link
+                href="https://www.facebook.com/waniaimpexindia/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <button className="p-3 border border-stone-700 rounded-lg hover:bg-stone-800 transition-all duration-300 hover:scale-105 group relative">
+                  <Facebook
+                    className="text-stone-300 group-hover:text-amber-400 transition-colors"
+                    size={20}
+                  />
+                  {/* <span className="absolute -bottom-7 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 text-xs text-amber-400 transition-opacity">
                   Artisan Community
-                </span>
-              </button>
+                  </span> */}
+                </button>
+              </Link>
             </div>
 
             {/* Export Certification */}
@@ -133,8 +148,7 @@ const Footer = () => {
       <div className="border-t border-stone-800 py-8 relative">
         <div className="container mx-auto px-4 md:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="font-body text-sm text-stone-500 text-center">
-            © {new Date().getFullYear()} Wania Impex - Energizing Sacred Spaces
-            Worldwide
+            © {new Date().getFullYear()} Wania Impex
           </p>
 
           <Link

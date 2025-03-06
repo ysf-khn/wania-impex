@@ -1,0 +1,57 @@
+User-agent: *
+# Disallow backend and non-public routes
+Disallow: /api/
+Disallow: /studio/
+Disallow: /sanity/
+Disallow: /drafts/
+Disallow: /preview/
+
+# Allow main pages and all category and product pages
+Allow: /
+Allow: /all-categories
+Allow: /all-categories/
+Allow: /aluminium-incense-holders/
+Allow: /brass-incense-fragrance-burners/
+Allow: /t-light-holders-incense-burners/
+Allow: /wooden-incense-holders-grids/
+Allow: /incense-accessories/
+Allow: /altar-tables/
+Allow: /altar-tools/
+Allow: /offering-bowls/
+Allow: /cauldrons/
+Allow: /brass-grids-altar-grids/
+Allow: /copper-bracelets/
+Allow: /copper-grids/
+Allow: /herb-grinders/
+Allow: /lanterns/
+Allow: /wooden-wall-hangings/
+Allow: /metal-wall-hangings/
+Allow: /singing-bowls/
+Allow: /storage-shelves/
+Allow: /ting-shas/
+Allow: /trinket-storage-dishes/
+
+# Allow product pages under each category
+Allow: /aluminium-incense-holders/*
+Allow: /brass-incense-fragrance-burners/*
+Allow: /t-light-holders-incense-burners/*
+Allow: /wooden-incense-holders-grids/*
+Allow: /incense-accessories/*
+Allow: /altar-tables/*
+Allow: /altar-tools/*
+Allow: /offering-bowls/*
+Allow: /cauldrons/*
+Allow: /brass-grids-altar-grids/*
+Allow: /copper-bracelets/*
+Allow: /copper-grids/*
+Allow: /herb-grinders/*
+Allow: /lanterns/*
+Allow: /wooden-wall-hangings/*
+Allow: /metal-wall-hangings/*
+Allow: /singing-bowls/*
+Allow: /storage-shelves/*
+Allow: /ting-shas/*
+Allow: /trinket-storage-dishes/*
+
+# Sitemap location
+Sitemap: https://waniaimpexind.com/sitemap.xml

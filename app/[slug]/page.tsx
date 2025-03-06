@@ -63,23 +63,23 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   return (
     <div className="min-h-screen bg-stone-50">
       {/* Category Hero Section */}
-      <div className="pt-28 pb-12 bg-white border-b border-stone-200">
-        <div className="container mx-auto px-4 md:px-8 flex flex-col items-center">
-          {/* Back button added here */}
-          <div className="self-start mb-4">
+      <div className="pt-24 sm:pt-28 md:pt-28 pb-8 sm:pb-10 md:pb-12 bg-white border-b border-stone-200">
+        <div className="container  mx-auto px-4 md:px-8 flex flex-col items-center">
+          {/* Back button with improved mobile appearance */}
+          <div className="self-start mb-8 sm:mb-8">
             <Link
               href="/all-categories"
-              className="text-stone-600 hover:text-amber-600 transition-colors font-body flex items-center gap-1"
+              className="text-sm sm:text-base text-stone-600 hover:text-amber-600 transition-colors font-body flex items-center gap-1"
             >
               &larr; Back to All Categories
             </Link>
           </div>
 
-          <h1 className="text-3xl md:text-4xl font-heading font-bold text-stone-800 mb-4 flex items-center justify-center gap-2">
-            <LayoutGrid className="text-amber-600" size={32} />
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-stone-800 mb-3 sm:mb-4 text-center flex flex-wrap items-center justify-center gap-2">
+            <LayoutGrid className="text-amber-600 w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />
             {category.name}
           </h1>
-          <p className="text-stone-600 font-body max-w-3xl mx-auto mb-8">
+          <p className="text-sm sm:text-base text-stone-600 font-body max-w-3xl mx-auto mb-6 sm:mb-8 text-center px-2">
             {category.description}
           </p>
         </div>

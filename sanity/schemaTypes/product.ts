@@ -67,7 +67,7 @@ export default defineType({
     }),
     defineField({
       name: "sizes",
-      title: "Sizes & Prices",
+      title: "Sizes",
       type: "array",
       of: [
         defineField({
@@ -79,27 +79,29 @@ export default defineType({
               name: "size",
               title: "Size",
               type: "string",
-              validation: (Rule) => Rule.required(),
+              // validation: (Rule) => Rule.required(),
             }),
-            defineField({
-              name: "price",
-              title: "Price",
-              type: "number",
-              validation: (Rule) => Rule.required().min(0),
-            }),
+            // defineField({
+            //   name: "price",
+            //   title: "Price",
+            //   type: "number",
+            // }),
           ],
           preview: {
             select: {
               title: "size",
-              subtitle: "price",
+              // subtitle: "price",
             },
-            prepare({ title, subtitle }) {
-              return { title, subtitle: `$${subtitle}` };
+            prepare({ title }) {
+              return {
+                title,
+                // subtitle: subtitle ? `$${subtitle}` : "No price",
+              };
             },
           },
         }),
       ],
-      validation: (Rule) => Rule.required().min(1), // Ensure at least one size exists
+      // validation: (Rule) => Rule.required().min(1), // Ensure at least one size exists
     }),
     defineField({
       name: "images",
@@ -123,6 +125,21 @@ export default defineType({
     defineField({
       name: "finish",
       title: "Finish",
+      type: "string",
+    }),
+    defineField({
+      name: "inside",
+      title: "Inside",
+      type: "string",
+    }),
+    defineField({
+      name: "outside",
+      title: "Outside",
+      type: "string",
+    }),
+    defineField({
+      name: "note",
+      title: "Note",
       type: "string",
     }),
     defineField({

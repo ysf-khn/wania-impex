@@ -5,12 +5,51 @@ import SlidingCategories from "./SlidingCategories";
 import Link from "next/link";
 
 const FeaturedCategories = () => {
+  // const categories = [
+  //   {
+  //     id: 1,
+  //     name: "Incense Burners",
+  //     description:
+  //       "Discover our collection of artisanal incense burners, from traditional brass holders to modern ceramic designs. Each piece is carefully crafted to enhance your sacred rituals while serving as a beautiful centerpiece for your space.",
+  //     image: "/featuredCollections/incenseburner.jpg",
+  //     featured: true,
+  //   },
+  //   {
+  //     id: 2,
+  //     name: "Altar Tools",
+  //     description:
+  //       "Enhance your spiritual practice with our finely crafted altar tools. From sacred knives to ceremonial chalices, each item is designed to support your rituals and devotion.",
+  //     image: "/featuredCollections/tools.jpg",
+  //   },
+  //   {
+  //     id: 3,
+  //     name: "Offering Bowls",
+  //     description:
+  //       "Beautifully designed offering bowls for your spiritual ceremonies. Perfect for holding sacred herbs, water, or ritual offerings, these bowls add meaning to your altar space.",
+  //     image: "/featuredCollections/bowls.jpg",
+  //   },
+  //   {
+  //     id: 4,
+  //     name: "Lanterns",
+  //     description:
+  //       "Illuminate your space with our beautifully crafted lanterns. Designed with intricate patterns and sacred symbolism, these lanterns create a warm and serene ambiance for your home or altar.",
+  //     image: "/featuredCollections/lantern.avif",
+  //   },
+  //   {
+  //     id: 5,
+  //     name: "Copper Bracelets",
+  //     description:
+  //       "Experience the benefits of our handcrafted copper bracelets, known for their healing and grounding properties. Each bracelet is designed with intricate detailing, blending spirituality with style.",
+  //     image: "/featuredCollections/bracelet.jpeg",
+  //   },
+  // ];
   const categories = [
     {
       id: 1,
       name: "Incense Burners",
       description:
-        "Discover our collection of artisanal incense burners, from traditional brass holders to modern ceramic designs. Each piece is carefully crafted to enhance your sacred rituals while serving as a beautiful centerpiece for your space.",
+        "Largest producer of ISO-certified incense burners. Choose from 100+ customizable designs with MOQ 500 units. Export-ready packaging & compliance with global standards (REACH, FDA, CE). Annual production capacity: 5M+ units.",
+      slug: "wooden-incense-holders-grids",
       image: "/featuredCollections/incenseburner.jpg",
       featured: true,
     },
@@ -18,28 +57,32 @@ const FeaturedCategories = () => {
       id: 2,
       name: "Altar Tools",
       description:
-        "Enhance your spiritual practice with our finely crafted altar tools. From sacred knives to ceremonial chalices, each item is designed to support your rituals and devotion.",
+        "Custom-crafted altar tools in brass, wood, and sacred alloys. Full OEM/ODM services available with engraving customization. Compliant with international metalwork standards. Production lead time: 30-45 days.",
+      slug: "altar-tools",
       image: "/featuredCollections/tools.jpg",
     },
     {
       id: 3,
       name: "Offering Bowls",
       description:
-        "Beautifully designed offering bowls for your spiritual ceremonies. Perfect for holding sacred herbs, water, or ritual offerings, these bowls add meaning to your altar space.",
+        "Stone & ceramic offering bowls for spiritual retailers. Minimum order quantity 250 units. Custom branding available. Export packaging includes shock-absorbent padding and customs documentation.",
+      slug: "offering-bowls",
       image: "/featuredCollections/bowls.jpg",
     },
     {
       id: 4,
       name: "Lanterns",
       description:
-        "Illuminate your space with our beautifully crafted lanterns. Designed with intricate patterns and sacred symbolism, these lanterns create a warm and serene ambiance for your home or altar.",
+        "Hand-forged iron lanterns manufactured at scale. Customizable symbolic patterns. MOQ 1000 units. CE-certified electrical components. Palletization services available for global shipping.",
+      slug: "lanterns",
       image: "/featuredCollections/lantern.avif",
     },
     {
       id: 5,
       name: "Copper Bracelets",
       description:
-        "Experience the benefits of our handcrafted copper bracelets, known for their healing and grounding properties. Each bracelet is designed with intricate detailing, blending spirituality with style.",
+        "Fair Trade-certified copper jewelry production. Available in bulk quantities (MOQ 2000 units). Custom sizing & alloy blends. Includes compliance documentation for international markets.",
+      slug: "copper-bracelets",
       image: "/featuredCollections/bracelet.jpeg",
     },
   ];
@@ -56,58 +99,123 @@ const FeaturedCategories = () => {
           </p>
         </div>
 
-        <div className="flex flex-col gap-16 px-4">
-          {categories.map((category, index) => (
-            <div
-              key={category.id}
-              className={`flex flex-col md:flex-row gap-8 items-center ${
-                category.featured ? "bg-amber-50/50 rounded-2xl p-8" : ""
-              }`}
-              // Preserve desktop alternating layout
-              style={{ flexDirection: index % 2 === 0 ? "row" : "row-reverse" }}
-            >
-              {/* Image Container - Always first on mobile */}
-              <div className="w-full md:w-1/2 order-1 md:order-none">
+        <div>
+          {/* Desktop Layout - Hidden on mobile */}
+          <div className="hidden md:block">
+            <div className="flex flex-col gap-16 px-4">
+              {categories.map((category, index) => (
                 <div
-                  className={`relative h-[400px] w-full rounded-xl overflow-hidden ${
-                    category.featured ? "shadow-lg" : ""
+                  key={category.id}
+                  className={`flex flex-col md:flex-row gap-8 items-center ${
+                    category.featured ? "bg-amber-50/50 rounded-2xl p-8" : ""
                   }`}
+                  style={{
+                    flexDirection: index % 2 === 0 ? "row" : "row-reverse",
+                  }}
                 >
-                  <Image
-                    src={category.image}
-                    alt={category.name}
-                    fill
-                    className="object-cover hover:scale-105 transition-transform duration-500"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                </div>
-              </div>
+                  {/* Image Container */}
+                  <div className="w-full md:w-1/2">
+                    <div
+                      className={`relative h-[400px] w-full rounded-xl overflow-hidden ${
+                        category.featured ? "shadow-lg" : ""
+                      }`}
+                    >
+                      <Image
+                        src={category.image}
+                        alt={category.name}
+                        fill
+                        className="object-cover hover:scale-105 transition-transform duration-500"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                      />
+                    </div>
+                  </div>
 
-              {/* Content Container - Always second on mobile */}
-              <div className="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left order-2 md:order-none">
-                <div className="flex items-center gap-2 mb-2">
-                  {category.featured && (
-                    <Sparkles className="text-amber-600" size={20} />
-                  )}
-                  <h3 className="text-2xl md:text-3xl font-bold font-heading">
-                    {category.name}
-                  </h3>
+                  {/* Content Container */}
+                  <div className="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left">
+                    <div className="flex items-center gap-2 mb-2">
+                      {category.featured && (
+                        <Sparkles className="text-amber-600" size={20} />
+                      )}
+                      <h3 className="text-2xl md:text-3xl font-bold font-heading">
+                        {category.name}
+                      </h3>
+                    </div>
+                    <p className="text-gray-600 font-body mb-6 max-w-lg">
+                      {category.description}
+                    </p>
+                    <Link href={`/${category.slug}`}>
+                      <button
+                        className={`font-cta px-6 py-2 border rounded-xl transition-colors ${
+                          category.featured
+                            ? "border-amber-200 hover:bg-amber-50"
+                            : "border-gray-200 hover:bg-gray-50"
+                        }`}
+                      >
+                        Explore {category.name}
+                      </button>
+                    </Link>
+                  </div>
                 </div>
-                <p className="text-gray-600 font-body mb-6 max-w-lg">
-                  {category.description}
-                </p>
-                <button
-                  className={`font-cta px-6 py-2 border rounded-xl transition-colors ${
-                    category.featured
-                      ? "border-amber-200 hover:bg-amber-50"
-                      : "border-gray-200 hover:bg-gray-50"
+              ))}
+            </div>
+          </div>
+
+          {/* Mobile Layout - Hidden on desktop */}
+          <div className="md:hidden">
+            <div className="flex flex-col gap-16 px-4">
+              {categories.map((category) => (
+                <div
+                  key={category.id}
+                  className={`flex flex-col gap-8 items-center ${
+                    category.featured ? "bg-amber-50/50 rounded-2xl p-8" : ""
                   }`}
                 >
-                  Explore {category.name}
-                </button>
-              </div>
+                  {/* Image Container - Always First */}
+                  <div className="w-full">
+                    <div
+                      className={`relative h-[400px] w-full rounded-xl overflow-hidden ${
+                        category.featured ? "shadow-lg" : ""
+                      }`}
+                    >
+                      <Image
+                        src={category.image}
+                        alt={category.name}
+                        fill
+                        className="object-cover hover:scale-105 transition-transform duration-500"
+                        sizes="100vw"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Content Container - Always Second */}
+                  <div className="w-full flex flex-col items-center text-center">
+                    <div className="flex items-center gap-2 mb-2">
+                      {category.featured && (
+                        <Sparkles className="text-amber-600" size={20} />
+                      )}
+                      <h3 className="text-2xl font-bold font-heading">
+                        {category.name}
+                      </h3>
+                    </div>
+                    <p className="text-gray-600 font-body mb-6 max-w-lg">
+                      {category.description}
+                    </p>
+                    <Link href={`/${category.slug}`}>
+                      <button
+                        className={`font-cta px-6 py-2 border rounded-xl transition-colors ${
+                          category.featured
+                            ? "border-amber-200 hover:bg-amber-50"
+                            : "border-gray-200 hover:bg-gray-50"
+                        }`}
+                      >
+                        Explore {category.name}
+                      </button>
+                    </Link>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
 
         <SlidingCategories />

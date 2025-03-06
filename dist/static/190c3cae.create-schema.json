@@ -157,57 +157,12 @@
         "type": "string"
       },
       {
-        "validation": [
-          {
-            "rules": [
-              {
-                "flag": "presence",
-                "constraint": "required"
-              },
-              {
-                "flag": "min",
-                "constraint": 1
-              }
-            ],
-            "level": "error"
-          }
-        ],
         "of": [
           {
             "fields": [
               {
-                "validation": [
-                  {
-                    "rules": [
-                      {
-                        "flag": "presence",
-                        "constraint": "required"
-                      }
-                    ],
-                    "level": "error"
-                  }
-                ],
                 "name": "size",
                 "type": "string"
-              },
-              {
-                "validation": [
-                  {
-                    "rules": [
-                      {
-                        "flag": "presence",
-                        "constraint": "required"
-                      },
-                      {
-                        "flag": "min",
-                        "constraint": 0
-                      }
-                    ],
-                    "level": "error"
-                  }
-                ],
-                "name": "price",
-                "type": "number"
               }
             ],
             "type": "object",
@@ -215,8 +170,7 @@
           }
         ],
         "name": "sizes",
-        "type": "array",
-        "title": "Sizes & Prices"
+        "type": "array"
       },
       {
         "validation": [
@@ -252,6 +206,18 @@
       },
       {
         "name": "finish",
+        "type": "string"
+      },
+      {
+        "name": "inside",
+        "type": "string"
+      },
+      {
+        "name": "outside",
+        "type": "string"
+      },
+      {
+        "name": "note",
         "type": "string"
       },
       {
