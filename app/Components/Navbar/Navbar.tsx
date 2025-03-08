@@ -242,6 +242,7 @@ const Navbar = () => {
             <button
               className="md:hidden p-2 rounded-full"
               onClick={() => setIsOpen(!isOpen)}
+              aria-label="Open Mobile Menu"
             >
               {isOpen ? (
                 <XMarkIcon className="h-6 w-6 text-gray-700" />
@@ -270,7 +271,11 @@ const Navbar = () => {
       >
         <div className="p-6 h-full flex flex-col">
           {/* Close Button */}
-          <button className="absolute top-4 right-4" onClick={closeMenu}>
+          <button
+            className="absolute top-4 right-4"
+            onClick={closeMenu}
+            aria-label="Close Menu"
+          >
             <XMarkIcon className="h-6 w-6 text-gray-700" />
           </button>
 

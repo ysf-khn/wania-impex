@@ -102,8 +102,12 @@ const Footer = () => {
                 href="https://www.instagram.com/wania_impex/"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Wania Impex Instagram"
               >
-                <button className="p-3 border border-stone-700 rounded-lg hover:bg-stone-800 transition-all duration-300 hover:scale-105 group relative">
+                <button
+                  className="p-3 border border-stone-700 rounded-lg hover:bg-stone-800 transition-all duration-300 hover:scale-105 group relative"
+                  aria-label="Wania Impex Instagram"
+                >
                   <Instagram
                     className="text-stone-300 group-hover:text-amber-400 transition-colors"
                     size={20}
@@ -118,8 +122,12 @@ const Footer = () => {
                 href="https://www.facebook.com/waniaimpexindia/"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Wania Impex Facebook"
               >
-                <button className="p-3 border border-stone-700 rounded-lg hover:bg-stone-800 transition-all duration-300 hover:scale-105 group relative">
+                <button
+                  className="p-3 border border-stone-700 rounded-lg hover:bg-stone-800 transition-all duration-300 hover:scale-105 group relative"
+                  aria-label="Wania Impex Facebook"
+                >
                   <Facebook
                     className="text-stone-300 group-hover:text-amber-400 transition-colors"
                     size={20}
