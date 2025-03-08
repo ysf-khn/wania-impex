@@ -42,7 +42,7 @@ const SacredLogistics = () => {
                 },
                 {
                   title: "Just-in-Time Production",
-                  desc: "Efficient supply chain with 15-day turnaround for standard bulk orders",
+                  desc: "Efficient supply chain with just-in-time turnaround even for bulk orders",
                 },
               ].map((item, index) => (
                 <div key={index} className="flex items-start gap-3">

@@ -1,5 +1,12 @@
 import React from "react";
-import { Instagram, Facebook, MapPin, Phone, ScanBarcode } from "lucide-react";
+import {
+  Instagram,
+  Facebook,
+  MapPin,
+  Phone,
+  ScanBarcode,
+  Mail,
+} from "lucide-react";
 import Link from "next/link";
 
 const Footer = () => {
@@ -53,10 +60,13 @@ const Footer = () => {
             </div>
 
             <div className="mt-4 flex items-center gap-3">
-              <ScanBarcode className="text-amber-500/80" size={20} />
-              <div className="font-mono text-sm text-stone-400 bg-stone-800/30 px-3 py-1 rounded">
-                IMPEX CODE: ERCPD2256Q
-              </div>
+              <Mail className="text-amber-500/80" size={20} />
+              <Link
+                href="mailto:info@waniaimpex.com"
+                className="font-mono text-sm text-stone-400 bg-stone-800/30 px-3 py-1 rounded hover:text-amber-300 transition-colors"
+              >
+                Email: info@waniaimpex.com
+              </Link>
             </div>
           </div>
 
@@ -132,9 +142,6 @@ const Footer = () => {
                     className="text-stone-300 group-hover:text-amber-400 transition-colors"
                     size={20}
                   />
-                  {/* <span className="absolute -bottom-7 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 text-xs text-amber-400 transition-opacity">
-                  Artisan Community
-                  </span> */}
                 </button>
               </Link>
             </div>

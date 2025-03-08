@@ -49,10 +49,10 @@ const ContactPage = () => {
                 <div>
                   <h3 className="font-semibold text-gray-800">Email</h3>
                   <a
-                    href="mailto:info@waniaimpexind.com"
+                    href="mailto:info@waniaimpex.com"
                     className="text-gray-600 hover:text-amber-600 transition-colors"
                   >
-                    info@waniaimpexind.com
+                    info@waniaimpex.com
                   </a>
                 </div>
               </div>
