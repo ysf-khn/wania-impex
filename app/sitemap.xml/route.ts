@@ -37,9 +37,9 @@ export async function GET() {
   const staticPages = ["", "all-categories"];
 
   const categoryPages = categories.map(({ slug }) => `${slug.current}`);
-  const productPages = products.map(
-    ({ slug, category }) => `${category.current}/${slug.current}`
-  );
+  const productPages = products
+    .filter((product) => product.category && product.slug)
+    .map(({ slug, category }) => `${category.current}/${slug.current}`);
 
   const allPages = [...staticPages, ...categoryPages, ...productPages];
 
