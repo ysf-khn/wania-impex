@@ -244,7 +244,7 @@ const AboutPage = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
               {
-                src: "/aboutUs/aboutus1.jpg",
+                src: "/aboutUs/aboutus01.jpg",
                 alt: "Office Space",
                 caption: "Crafting Innovations in Every Corner",
               },
