@@ -5,7 +5,7 @@ const AboutPage = () => {
   return (
     <div className="bg-stone-50">
       {/* Heritage Hero */}
-      <section className="min-h-[70vh] relative overflow-hidden">
+      <section className="min-h-[70vh] relative overflow-hidden py-16">
         <div className="absolute inset-0 bg-stone-900/40 z-10" />
         <Image
           src="/aboutUs/aboutus3.jpg"
@@ -13,12 +13,12 @@ const AboutPage = () => {
           fill
           className="object-cover object-top"
         />
-        <div className="relative z-20 container mx-auto px-4 md:px-8 h-full flex items-center">
-          <div className="max-w-2xl bg-stone-100/90 backdrop-blur-sm p-8 mt-32 rounded-xl">
-            <h1 className="text-4xl md:text-5xl font-bold font-heading mb-6 text-stone-800">
+        <div className="relative z-20 container mx-auto px-4 md:px-8 h-full flex items-center justify-center">
+          <div className="max-w-2xl bg-stone-100/90 backdrop-blur-sm p-6 md:p-8 my-12 rounded-xl">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold font-heading mb-4 md:mb-6 text-stone-800">
               Where Metal Whispers Ancient Secrets
             </h1>
-            <p className="text-lg text-stone-600 font-body mb-8">
+            <p className="text-base md:text-lg text-stone-600 font-body mb-6 md:mb-8">
               Wania Impex: Where Moradabad&apos;s metalcraft legacy meets
               bohemian soul. For three generations, we&apos;ve transformed
               sacred traditions into mystical artifacts that whisper to new age
@@ -245,22 +245,22 @@ const AboutPage = () => {
             {[
               {
                 src: "/aboutUs/aboutus1.jpg",
-                alt: "Metal casting process",
+                alt: "Office",
                 caption: "Crafting Innovations in Every Corner",
               },
               {
                 src: "/aboutUs/aboutus4.jpg",
-                alt: "Engraving details",
+                alt: "Workshop",
                 caption: "Whispering Stories into Materials",
               },
               {
                 src: "/aboutUs/aboutus5.jpg",
-                alt: "Patina application",
+                alt: "Workshop #2",
                 caption: "Breathing Life into Surfaces",
               },
               {
                 src: "/aboutUs/aboutus6.jpg",
-                alt: "Quality inspection",
+                alt: "Workshop #3",
                 caption: "Consecrating Each Piece",
               },
             ].map((image, index) => (

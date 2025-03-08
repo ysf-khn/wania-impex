@@ -19,6 +19,7 @@ const Navbar = () => {
   // Create a ref for the mega menu and dropdown button
   const megaMenuRef = useRef<HTMLDivElement>(null);
   const dropdownButtonRef = useRef<HTMLButtonElement>(null);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
 
   // Close menu function
   const closeMenu = () => {
@@ -119,6 +120,26 @@ const Navbar = () => {
       document.body.style.overflow = "auto";
     }
   }, [isOpen]);
+
+  // Auto-scroll to bottom of category when expanded
+  useEffect(() => {
+    if (openCategories.length > 0 && mobileMenuRef.current) {
+      const lastOpenedCategory = openCategories[openCategories.length - 1];
+      const categoryElement = document.getElementById(
+        `category-${lastOpenedCategory}`
+      );
+
+      if (categoryElement) {
+        // Calculate the position to scroll to
+        const categoryBottom =
+          categoryElement.offsetTop + categoryElement.offsetHeight;
+        mobileMenuRef.current.scrollTo({
+          top: categoryBottom,
+          behavior: "smooth",
+        });
+      }
+    }
+  }, [openCategories]);
 
   const toggleCategory = (categoryName: string) => {
     setOpenCategories((prev) =>
@@ -291,10 +312,15 @@ const Navbar = () => {
             </Link>
           </div>
 
-          <nav className="flex-1 overflow-y-auto">
+          {/* Scrollable Container */}
+          <div
+            ref={mobileMenuRef}
+            className="flex-1 overflow-y-auto pb-16" // Added padding at the bottom
+          >
             {/* Mobile Categories */}
             {organizedCategories.map((category) => (
               <div
+                id={`category-${category.name}`}
                 key={category.name}
                 className="border-b border-gray-200 font-body"
               >
@@ -356,11 +382,11 @@ const Navbar = () => {
             <Link
               href="/contact-us"
               onClick={closeMenu}
-              className=" font-body block p-4 text-lg font-semibold text-gray-800 border-b border-gray-200 hover:bg-gray-50 transition-colors"
+              className="font-body block p-4 text-lg font-semibold text-gray-800 border-b border-gray-200 hover:bg-gray-50 transition-colors"
             >
               Contact
             </Link>
-          </nav>
+          </div>
         </div>
       </div>
     </nav>
