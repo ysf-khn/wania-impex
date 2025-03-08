@@ -24,7 +24,8 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: "Wania Impex",
-  description: "Handcrafted Ritual Essentials for Sacred Spaces",
+  description:
+    "Largest Manufacturer & Exporter of Incense Burners & New Age Ritual Tools",
 };
 
 export default function RootLayout({
