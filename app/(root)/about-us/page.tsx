@@ -245,7 +245,7 @@ const AboutPage = () => {
             {[
               {
                 src: "/aboutUs/aboutus1.jpg",
-                alt: "Office",
+                alt: "Office Space",
                 caption: "Crafting Innovations in Every Corner",
               },
               {
