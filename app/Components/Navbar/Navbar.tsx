@@ -244,7 +244,7 @@ const Navbar = () => {
                 About Us
               </Link>
               <Link
-                href="#"
+                href="/netherlands"
                 onClick={closeMenu}
                 className="text-black hover:text-orange-600 transition-colors"
               >

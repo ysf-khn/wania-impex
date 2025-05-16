@@ -65,7 +65,7 @@ const Footer = () => {
                 href="mailto:info@waniaimpex.com"
                 className="font-mono text-sm text-stone-400 bg-stone-800/30 px-3 py-1 rounded hover:text-amber-300 transition-colors"
               >
-                Email: info@waniaimpex.com
+                info@waniaimpex.com
               </Link>
             </div>
           </div>

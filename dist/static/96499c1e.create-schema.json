@@ -36,6 +36,10 @@
         "options": {
           "list": [
             {
+              "title": "Netherlands Warehouse",
+              "value": "netherlands"
+            },
+            {
               "title": "Altar Tables",
               "value": "altar-tables"
             },
@@ -123,6 +127,7 @@
               {
                 "flag": "valid",
                 "constraint": [
+                  "netherlands",
                   "altar-tables",
                   "altar-tools",
                   "aluminium-incense-holders",

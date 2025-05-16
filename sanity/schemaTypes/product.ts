@@ -24,6 +24,7 @@ export default defineType({
       validation: (Rule) => Rule.required(),
       options: {
         list: [
+          { title: "Netherlands Warehouse", value: "netherlands" },
           { title: "Altar Tables", value: "altar-tables" },
           { title: "Altar Tools", value: "altar-tools" },
           {

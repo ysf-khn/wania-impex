@@ -12,6 +12,16 @@ export const structure: StructureResolver = (S) =>
             .title("Products by Category")
             .items([
               S.listItem()
+                .title("Netherlands Warehouse")
+                .child(
+                  S.documentList()
+                    .title("Netherlands Warehouse")
+                    .filter(
+                      '_type == "product" && itemCategory == "netherlands"'
+                    )
+                    .defaultOrdering([{ field: "itemNo", direction: "asc" }])
+                ),
+              S.listItem()
                 .title("Altar Tables")
                 .child(
                   S.documentList()

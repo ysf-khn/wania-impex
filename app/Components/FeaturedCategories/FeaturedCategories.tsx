@@ -48,7 +48,7 @@ const FeaturedCategories = () => {
       id: 1,
       name: "Incense Burners",
       description:
-        "Largest producer of ISO-certified incense burners. Choose from 100+ customizable designs with MOQ 500 units. Export-ready packaging & compliance with global standards (REACH, FDA, CE). Annual production capacity: 5M+ units.",
+        "Largest producer of ISO-certified incense burners. Choose from 100+ customizable designs with MOQ 120 units. Export-ready packaging & compliance with global standards (REACH, FDA, CE). Annual production capacity: 5M+ units.",
       slug: "wooden-incense-holders-grids",
       image: "/featuredCollections/incenseburner.jpg",
       featured: true,
@@ -57,7 +57,7 @@ const FeaturedCategories = () => {
       id: 2,
       name: "Altar Tools",
       description:
-        "Custom-crafted altar tools in brass, wood, and sacred alloys. Full OEM/ODM services available with engraving customization. Compliant with international metalwork standards. Production lead time: 30-45 days.",
+        "Custom-crafted altar tools in brass, wood, and sacred alloys. Full OEM/ODM services available with engraving customization. Minimum order quantity 120 units. Compliant with international metalwork standards. Production lead time: 30-45 days.",
       slug: "altar-tools",
       image: "/featuredCollections/tools.jpg",
     },
@@ -65,7 +65,7 @@ const FeaturedCategories = () => {
       id: 3,
       name: "Offering Bowls",
       description:
-        "Stone & ceramic offering bowls for spiritual retailers. Minimum order quantity 250 units. Custom branding available. Export packaging includes shock-absorbent padding and customs documentation.",
+        "Stone & ceramic offering bowls for spiritual retailers. Minimum order quantity 120 units. Custom branding available. Export packaging includes shock-absorbent padding and customs documentation.",
       slug: "offering-bowls",
       image: "/featuredCollections/bowls.jpg",
     },
@@ -73,7 +73,7 @@ const FeaturedCategories = () => {
       id: 4,
       name: "Lanterns",
       description:
-        "Hand-forged iron lanterns manufactured at scale. Customizable symbolic patterns. MOQ 1000 units. CE-certified electrical components. Palletization services available for global shipping.",
+        "Hand-forged iron lanterns manufactured at scale. Customizable symbolic patterns. MOQ 120 units. CE-certified electrical components. Palletization services available for global shipping.",
       slug: "lanterns",
       image: "/featuredCollections/lantern.avif",
     },
@@ -81,7 +81,7 @@ const FeaturedCategories = () => {
       id: 5,
       name: "Copper Bracelets",
       description:
-        "Fair Trade-certified copper jewelry production. Available in bulk quantities (MOQ 2000 units). Custom sizing & alloy blends. Includes compliance documentation for international markets.",
+        "Fair Trade-certified copper jewelry production. Available in bulk quantities (MOQ 120 units). Custom sizing & alloy blends. Includes compliance documentation for international markets.",
       slug: "copper-bracelets",
       image: "/featuredCollections/bracelet.jpeg",
     },

@@ -39,21 +39,23 @@ Product Name: ${itemName}`);
       </div> */}
 
       {/* Sizes section */}
-      <div>
-        <h2 className="text-lg sm:text-xl font-heading font-bold text-stone-800 mb-2 sm:mb-4">
-          Available Sizes
-        </h2>
-        <div className="flex flex-wrap gap-1.5 sm:gap-2">
-          {sizes.map((size) => (
-            <span
-              key={size.size}
-              className="px-2 sm:px-3 py-0.5 sm:py-1 bg-stone-100 text-stone-700 rounded-full text-xs sm:text-sm"
-            >
-              {size.size}
-            </span>
-          ))}
+      {sizes && (
+        <div>
+          <h2 className="text-lg sm:text-xl font-heading font-bold text-stone-800 mb-2 sm:mb-4">
+            Available Sizes
+          </h2>
+          <div className="flex flex-wrap gap-1.5 sm:gap-2">
+            {sizes.map((size) => (
+              <span
+                key={size.size}
+                className="px-2 sm:px-3 py-0.5 sm:py-1 bg-stone-100 text-stone-700 rounded-full text-xs sm:text-sm"
+              >
+                {size.size}
+              </span>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
 
       {/* WhatsApp button */}
       <div className="pt-4 sm:pt-6 border-t">
