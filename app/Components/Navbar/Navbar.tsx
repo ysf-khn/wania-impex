@@ -373,7 +373,7 @@ const Navbar = () => {
               About Us
             </Link>
             <Link
-              href="#"
+              href="/netherlands"
               onClick={closeMenu}
               className="font-body block p-4 text-lg font-semibold text-gray-800 border-b border-gray-200 hover:bg-gray-50 transition-colors"
             >
