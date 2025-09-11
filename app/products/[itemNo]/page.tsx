@@ -2,8 +2,14 @@ import { groq } from "next-sanity";
 import { client } from "@/sanity/lib/client";
 import { ImageCarousel } from "@/app/Components/ImageCarousel/ImageCarousel";
 import { ProductDetailsClient } from "@/app/Components/ProductDetailsClient";
-import Link from "next/link";
 import { InformationCircleIcon } from "@heroicons/react/24/solid";
+import { BackToCategoryButton } from "@/app/Components/BackToCategoryButton";
+import type { Metadata } from "next";
+import { 
+  generateProductTitle, 
+  generateProductDescription, 
+  generateProductKeywords 
+} from "@/lib/seo-utils";
 
 const productPathsQuery = groq`
   *[_type == "product"]{
@@ -37,6 +43,24 @@ export async function generateStaticParams() {
 
 export const revalidate = 60;
 
+export async function generateMetadata({ params }: { params: { itemNo: string } }): Promise<Metadata> {
+  const { itemNo } = params;
+  const product = await client.fetch(productQuery, { itemNo });
+
+  if (!product) {
+    return {
+      title: "Product Not Found | Wania Impex",
+      description: "The requested product could not be found."
+    };
+  }
+
+  return {
+    title: generateProductTitle(product),
+    description: generateProductDescription(product),
+    keywords: generateProductKeywords(product),
+  };
+}
+
 // const formatCategory = (category: string) => {
 //   return category
 //     .split("-")
@@ -46,10 +70,13 @@ export const revalidate = 60;
 
 export default async function ProductPage({
   params,
+  searchParams,
 }: {
   params: { itemNo: string };
+  searchParams: { returnTo?: string };
 }) {
   const { itemNo } = params;
+  const { returnTo } = searchParams;
   const product = await client.fetch(productQuery, { itemNo });
 
   if (!product) {
@@ -62,12 +89,10 @@ export default async function ProductPage({
     <div className="min-h-screen bg-stone-50">
       <div className="container mx-auto px-4 md:px-8 py-16">
         <div className="self-start mb-8 mt-12">
-          <Link
-            href={`/${product.itemCategory}`}
-            className="text-stone-600 hover:text-amber-600 transition-colors font-body flex items-center gap-1"
-          >
-            &larr; Back to All Items
-          </Link>
+          <BackToCategoryButton
+            categorySlug={product.itemCategory}
+            returnTo={returnTo}
+          />
         </div>
 
         <div className="overflow-hidden bg-white/80 backdrop-blur-sm rounded-md">

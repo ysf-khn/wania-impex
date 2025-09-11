@@ -8,6 +8,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState, useEffect, useRef } from "react";
+import { ResponsiveInlineSearch } from "../GlobalSearch/ResponsiveInlineSearch";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -181,8 +182,11 @@ const Navbar = () => {
               </span>
             </div>
 
+            {/* Search Area - Responsive */}
+            <ResponsiveInlineSearch />
+
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-12">
+            <div className="hidden md:flex items-center space-x-6">
               <div className="relative">
                 <button
                   ref={dropdownButtonRef}
@@ -261,7 +265,7 @@ const Navbar = () => {
 
             {/* Mobile Menu Button */}
             <button
-              className="md:hidden p-2 rounded-full"
+              className="md:hidden p-2 rounded-full flex-shrink-0"
               onClick={() => setIsOpen(!isOpen)}
               aria-label="Open Mobile Menu"
             >

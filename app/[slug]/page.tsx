@@ -5,6 +5,12 @@ import { categories } from "@/lib/categories";
 import { LayoutGrid } from "lucide-react";
 import { client } from "@/sanity/lib/client";
 import { CategoryProductsWrapper } from "../Components/Search/CategoryProductsWrapper";
+import type { Metadata } from "next";
+import { 
+  generateCategoryTitle, 
+  generateCategoryDescription, 
+  generateCategoryKeywords 
+} from "@/lib/seo-utils";
 
 const productsQuery = groq`
   *[_type == "product" && itemCategory == $slug]{
@@ -27,6 +33,24 @@ export async function generateStaticParams() {
 }
 
 export const revalidate = 60;
+
+export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
+  const { slug } = params;
+  const category = categories.find((cat) => cat.slug === slug);
+
+  if (!category) {
+    return {
+      title: "Category Not Found | Wania Impex",
+      description: "The requested category could not be found."
+    };
+  }
+
+  return {
+    title: generateCategoryTitle(category),
+    description: generateCategoryDescription(category),
+    keywords: generateCategoryKeywords(category),
+  };
+}
 
 interface CategoryPageProps {
   params: {

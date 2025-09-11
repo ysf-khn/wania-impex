@@ -3,6 +3,26 @@ import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
+const ProductLink = ({ itemNo, children }: { itemNo: string; children: React.ReactNode }) => {
+  // Calculate href directly during render to capture current URL state
+  const currentUrl = typeof window !== 'undefined' 
+    ? window.location.pathname + window.location.search 
+    : '';
+  const returnToParam = currentUrl ? encodeURIComponent(currentUrl) : '';
+  const href = currentUrl 
+    ? `/products/${itemNo}?returnTo=${returnToParam}`
+    : `/products/${itemNo}`;
+  
+  return (
+    <Link
+      href={href}
+      className="font-cta px-6 py-2 rounded-lg transition-colors inline-block bg-amber-600 hover:bg-amber-700 text-white font-bold"
+    >
+      {children}
+    </Link>
+  );
+};
+
 interface Size {
   price: number;
 }
@@ -117,12 +137,9 @@ const ProductCard = ({
             transform: isDesktop ? "translateZ(30px)" : "none",
           }}
         >
-          <Link
-            href={`/products/${product.itemNo}`}
-            className="font-cta px-6 py-2 rounded-lg transition-colors inline-block bg-amber-600 hover:bg-amber-700 text-white font-bold"
-          >
+          <ProductLink itemNo={product.itemNo}>
             View Details
-          </Link>
+          </ProductLink>
         </div>
       </div>
     </div>

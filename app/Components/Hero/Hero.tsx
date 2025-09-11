@@ -23,6 +23,7 @@ const Hero = () => {
               sacred space.
             </p>
           </div>
+          
           <div className="hidden md:block">
             <Link href="/all-categories">
               <button className="font-cta px-8 py-3 bg-amber-500/90 hover:bg-amber-500 text-stone-900 rounded-lg transition-colors flex items-center gap-2">
