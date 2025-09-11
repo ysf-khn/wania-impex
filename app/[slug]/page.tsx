@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Link from "next/link";
 import { groq } from "next-sanity";
 import { categories } from "@/lib/categories";
@@ -112,7 +112,9 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
       {/* Products Section with Search */}
       <main className="container mx-auto px-4 md:px-8 py-12">
         {products.length > 0 ? (
-          <CategoryProductsWrapper products={products} />
+          <Suspense fallback={<div className="text-center py-12">Loading products...</div>}>
+            <CategoryProductsWrapper products={products} />
+          </Suspense>
         ) : (
           <div className="text-center py-12">
             <p className="text-stone-600 font-body">

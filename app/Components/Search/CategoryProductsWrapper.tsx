@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { SearchBar } from "./SearchBar";
 import { ProductGrid } from "./ProductGrid";
@@ -32,17 +32,17 @@ export function CategoryProductsWrapper({
   const searchParams = useSearchParams();
   
   // Initialize state from URL parameters
-  const getInitialSortOption = (): SortOption => {
+  const getInitialSortOption = useCallback((): SortOption => {
     const sortParam = searchParams.get('sort');
     const validSortOptions: SortOption[] = ['name-asc', 'name-desc', 'itemno-asc', 'itemno-desc'];
     return validSortOptions.includes(sortParam as SortOption) 
       ? (sortParam as SortOption) 
       : 'name-asc';
-  };
+  }, [searchParams]);
   
-  const getInitialSearchTerm = (): string => {
+  const getInitialSearchTerm = useCallback((): string => {
     return searchParams.get('search') || '';
-  };
+  }, [searchParams]);
 
   const [filteredProducts, setFilteredProducts] = useState(products);
   const [sortOption, setSortOption] = useState<SortOption>(getInitialSortOption);
@@ -65,7 +65,7 @@ export function CategoryProductsWrapper({
     }
   };
 
-  const filterAndSortProducts = (searchTerm: string, sortOption: SortOption) => {
+  const filterAndSortProducts = useCallback((searchTerm: string, sortOption: SortOption) => {
     let filtered = products;
     
     if (searchTerm.trim()) {
@@ -84,7 +84,7 @@ export function CategoryProductsWrapper({
     
     const sorted = sortProducts(filtered, sortOption);
     setFilteredProducts(sorted);
-  };
+  }, [products]);
 
   const updateURL = (newSearchTerm: string, newSortOption: SortOption) => {
     const params = new URLSearchParams();
@@ -128,12 +128,12 @@ export function CategoryProductsWrapper({
     
     // Apply filtering and sorting with URL parameters
     filterAndSortProducts(urlSearchTerm, urlSortOption);
-  }, [searchParams]); // Listen to URL parameter changes
+  }, [searchParams, getInitialSortOption, getInitialSearchTerm, filterAndSortProducts, sortOption, searchTerm]); // Listen to URL parameter changes
 
   // Apply default sorting when products change
   useEffect(() => {
     filterAndSortProducts(searchTerm, sortOption);
-  }, [products]);
+  }, [products, filterAndSortProducts, searchTerm, sortOption]);
 
   return (
     <>

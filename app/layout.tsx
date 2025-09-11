@@ -23,6 +23,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NODE_ENV === 'production' ? 'https://waniaimpex.com' : 'http://localhost:3000'),
   title: "Wania Impex",
   description:
     "Largest Manufacturer & Exporter of Incense Burners & New Age Ritual Tools",

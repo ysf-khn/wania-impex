@@ -48,10 +48,12 @@ const secondarySearchQuery = groq`
   }
 `;
 
+export const dynamic = 'force-dynamic'
+
 export async function GET(request: NextRequest) {
   try {
     // Get search term from query parameters
-    const { searchParams } = new URL(request.url);
+    const searchParams = request.nextUrl.searchParams;
     const searchTerm = searchParams.get('q');
     const offset = parseInt(searchParams.get('offset') || '0');
     const limit = parseInt(searchParams.get('limit') || '10');
