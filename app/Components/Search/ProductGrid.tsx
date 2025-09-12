@@ -3,15 +3,15 @@ import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-const ProductLink = ({ itemNo, children }: { itemNo: string; children: React.ReactNode }) => {
+const ProductLink = ({ itemNo, itemCategory, children }: { itemNo: string; itemCategory: string; children: React.ReactNode }) => {
   // Calculate href directly during render to capture current URL state
   const currentUrl = typeof window !== 'undefined' 
     ? window.location.pathname + window.location.search 
     : '';
   const returnToParam = currentUrl ? encodeURIComponent(currentUrl) : '';
   const href = currentUrl 
-    ? `/products/${itemNo}?returnTo=${returnToParam}`
-    : `/products/${itemNo}`;
+    ? `/${itemCategory}/${itemNo}?returnTo=${returnToParam}`
+    : `/${itemCategory}/${itemNo}`;
   
   return (
     <Link
@@ -137,7 +137,7 @@ const ProductCard = ({
             transform: isDesktop ? "translateZ(30px)" : "none",
           }}
         >
-          <ProductLink itemNo={product.itemNo}>
+          <ProductLink itemNo={product.itemNo} itemCategory={product.itemCategory}>
             View Details
           </ProductLink>
         </div>

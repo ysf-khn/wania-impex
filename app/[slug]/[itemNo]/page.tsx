@@ -13,12 +13,13 @@ import {
 
 const productPathsQuery = groq`
   *[_type == "product"]{
-    itemNo
+    itemNo,
+    itemCategory
   }
 `;
 
 const productQuery = groq`
-  *[_type == "product" && itemNo == $itemNo][0]{
+  *[_type == "product" && itemCategory == $slug && itemNo == $itemNo][0]{
     _id,
     itemNo,
     itemName,
@@ -36,16 +37,17 @@ const productQuery = groq`
 
 export async function generateStaticParams() {
   const products = await client.fetch(productPathsQuery);
-  return products.map((product: { itemNo: string }) => ({
+  return products.map((product: { itemNo: string; itemCategory: string }) => ({
+    slug: product.itemCategory,
     itemNo: product.itemNo,
   }));
 }
 
 export const revalidate = 60;
 
-export async function generateMetadata({ params }: { params: { itemNo: string } }): Promise<Metadata> {
-  const { itemNo } = params;
-  const product = await client.fetch(productQuery, { itemNo });
+export async function generateMetadata({ params }: { params: { slug: string; itemNo: string } }): Promise<Metadata> {
+  const { slug, itemNo } = params;
+  const product = await client.fetch(productQuery, { slug, itemNo });
 
   if (!product) {
     return {
@@ -61,29 +63,20 @@ export async function generateMetadata({ params }: { params: { itemNo: string } 
   };
 }
 
-// const formatCategory = (category: string) => {
-//   return category
-//     .split("-")
-//     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-//     .join(" ");
-// };
-
 export default async function ProductPage({
   params,
   searchParams,
 }: {
-  params: { itemNo: string };
+  params: { slug: string; itemNo: string };
   searchParams: { returnTo?: string };
 }) {
-  const { itemNo } = params;
+  const { slug, itemNo } = params;
   const { returnTo } = searchParams;
-  const product = await client.fetch(productQuery, { itemNo });
+  const product = await client.fetch(productQuery, { slug, itemNo });
 
   if (!product) {
     return <div>Product Not Found</div>;
   }
-
-  // const formattedCategory = formatCategory(product.itemCategory);
 
   return (
     <div className="min-h-screen bg-stone-50">

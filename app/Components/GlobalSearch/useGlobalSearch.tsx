@@ -29,13 +29,20 @@ export function useGlobalSearch() {
 
   // Debounced search effect
   useEffect(() => {
+    // Set loading immediately when searchTerm changes
+    if (searchTerm.trim()) {
+      setIsLoading(true);
+      setError(null);
+    } else {
+      setResults([]);
+      setHasMore(false);
+      setIsLoading(false);
+      setError(null);
+    }
+
     const timeoutId = setTimeout(() => {
       if (searchTerm.trim()) {
         performSearch(searchTerm.trim(), true);
-      } else {
-        setResults([]);
-        setHasMore(false);
-        setIsLoading(false);
       }
     }, 300);
 

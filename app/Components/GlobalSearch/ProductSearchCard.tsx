@@ -24,7 +24,7 @@ export function ProductSearchCard({ product, onSelect }: ProductSearchCardProps)
 
   return (
     <Link
-      href={`/products/${product.itemNo}`}
+      href={`/${product.itemCategory}/${product.itemNo}`}
       onClick={onSelect}
       className="flex items-center gap-3 p-3 rounded-lg hover:bg-stone-50 transition-colors group"
     >
