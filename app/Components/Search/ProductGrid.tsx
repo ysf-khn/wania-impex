@@ -2,13 +2,31 @@
 import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { SortOption } from "./SortOptions";
 
-const ProductLink = ({ itemNo, itemCategory, children }: { itemNo: string; itemCategory: string; children: React.ReactNode }) => {
-  // Calculate href directly during render to capture current URL state
-  const currentUrl = typeof window !== 'undefined' 
-    ? window.location.pathname + window.location.search 
-    : '';
+const ProductLink = ({ itemNo, itemCategory, searchTerm, sortOption, children }: { 
+  itemNo: string; 
+  itemCategory: string; 
+  searchTerm: string;
+  sortOption: SortOption;
+  children: React.ReactNode 
+}) => {
+  // Build returnTo URL from current state instead of window.location to avoid race conditions
+  const currentPath = typeof window !== 'undefined' ? window.location.pathname : '';
+  const params = new URLSearchParams();
+  
+  if (searchTerm.trim()) {
+    params.set('search', searchTerm);
+  }
+  
+  if (sortOption !== 'name-asc') {
+    params.set('sort', sortOption);
+  }
+  
+  const queryString = params.toString();
+  const currentUrl = currentPath + (queryString ? `?${queryString}` : '');
   const returnToParam = currentUrl ? encodeURIComponent(currentUrl) : '';
+  
   const href = currentUrl 
     ? `/${itemCategory}/${itemNo}?returnTo=${returnToParam}`
     : `/${itemCategory}/${itemNo}`;
@@ -42,14 +60,20 @@ interface Product {
 interface ProductGridProps {
   products: Product[];
   productsPerPage?: number;
+  searchTerm: string;
+  sortOption: SortOption;
 }
 
 const ProductCard = ({
   product,
   isDesktop,
+  searchTerm,
+  sortOption,
 }: {
   product: Product;
   isDesktop: boolean;
+  searchTerm: string;
+  sortOption: SortOption;
 }) => {
   const cardRef = useRef<HTMLDivElement>(null);
 
@@ -137,7 +161,12 @@ const ProductCard = ({
             transform: isDesktop ? "translateZ(30px)" : "none",
           }}
         >
-          <ProductLink itemNo={product.itemNo} itemCategory={product.itemCategory}>
+          <ProductLink 
+            itemNo={product.itemNo} 
+            itemCategory={product.itemCategory}
+            searchTerm={searchTerm}
+            sortOption={sortOption}
+          >
             View Details
           </ProductLink>
         </div>
@@ -149,6 +178,8 @@ const ProductCard = ({
 export function ProductGrid({
   products,
   productsPerPage = 16,
+  searchTerm,
+  sortOption,
 }: ProductGridProps) {
   const [isDesktop, setIsDesktop] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
@@ -217,6 +248,8 @@ export function ProductGrid({
             key={product._id}
             product={product}
             isDesktop={isDesktop}
+            searchTerm={searchTerm}
+            sortOption={sortOption}
           />
         ))}
       </div>
