@@ -21,6 +21,8 @@ const Navbar = () => {
   const megaMenuRef = useRef<HTMLDivElement>(null);
   const dropdownButtonRef = useRef<HTMLButtonElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // Close menu function
   const closeMenu = () => {
@@ -150,6 +152,60 @@ const Navbar = () => {
     );
   };
 
+  // Hover handlers for mega menu
+  const handleMouseEnterButton = () => {
+    // Clear any existing close timeout
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+
+    // Set a small delay before opening to prevent flickering
+    hoverTimeoutRef.current = setTimeout(() => {
+      setActiveMegaMenu("products");
+    }, 150);
+  };
+
+  const handleMouseLeaveButton = () => {
+    // Clear the opening timeout if user leaves before it triggers
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+      hoverTimeoutRef.current = null;
+    }
+
+    // Delay closing to allow user to move to the dropdown
+    closeTimeoutRef.current = setTimeout(() => {
+      setActiveMegaMenu(null);
+    }, 300);
+  };
+
+  const handleMouseEnterMenu = () => {
+    // Clear any close timeout when entering the menu
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+  };
+
+  const handleMouseLeaveMenu = () => {
+    // Close the menu when leaving it
+    closeTimeoutRef.current = setTimeout(() => {
+      setActiveMegaMenu(null);
+    }, 200);
+  };
+
+  // Cleanup timeouts on unmount
+  useEffect(() => {
+    return () => {
+      if (hoverTimeoutRef.current) {
+        clearTimeout(hoverTimeoutRef.current);
+      }
+      if (closeTimeoutRef.current) {
+        clearTimeout(closeTimeoutRef.current);
+      }
+    };
+  }, []);
+
   return (
     <nav
       className={`fixed w-full z-50 transition-transform duration-300 ${
@@ -196,6 +252,8 @@ const Navbar = () => {
                       activeMegaMenu === "products" ? null : "products"
                     )
                   }
+                  onMouseEnter={handleMouseEnterButton}
+                  onMouseLeave={handleMouseLeaveButton}
                 >
                   Bulk Catalog
                   <ChevronDownIcon
@@ -205,15 +263,26 @@ const Navbar = () => {
                   />
                 </button>
 
+                {/* Invisible bridge to prevent dropdown from closing */}
+                <div
+                  className={`absolute left-0 right-0 h-14 ${
+                    activeMegaMenu === "products" ? "block" : "hidden"
+                  }`}
+                  onMouseEnter={handleMouseEnterMenu}
+                  onMouseLeave={handleMouseLeaveButton}
+                />
+
                 {/* Mega Menu */}
                 <div
                   ref={megaMenuRef}
-                  className={`absolute left-[10%] transform -translate-x-1/2 top-full md:top-14 w-[80vw] max-w-5xl bg-white shadow-xl rounded-xl border border-gray-100 transition-all duration-300 ease-in-out 
+                  className={`absolute left-[10%] transform -translate-x-1/2 top-full md:top-14 w-[80vw] max-w-5xl bg-white shadow-xl rounded-xl border border-gray-100 transition-all duration-300 ease-in-out
                   ${
                     activeMegaMenu === "products"
                       ? "opacity-100 scale-100"
                       : "opacity-0 scale-95 pointer-events-none"
                   }`}
+                  onMouseEnter={handleMouseEnterMenu}
+                  onMouseLeave={handleMouseLeaveMenu}
                 >
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-6 p-6">
                     {organizedCategories.map((category) => (
