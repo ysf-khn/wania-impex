@@ -167,14 +167,14 @@ const Footer = () => {
           </p>
 
           <Link
-            href="https://weekendlabs.in"
+            href="https://moosebase.com"
             target="_blank"
-            rel="noopener noreferrer"
+            rel=""
             className="font-body text-sm text-stone-500 hover:text-amber-500 transition-colors flex items-center gap-1"
           >
-            <span>Experience Crafted by</span>
+            <span>Designed and developed by</span>
             <span className="bg-gradient-to-r from-amber-400 to-amber-500 bg-clip-text text-transparent font-medium">
-              Weekend Labs
+              MooseBase
             </span>
           </Link>
         </div>
